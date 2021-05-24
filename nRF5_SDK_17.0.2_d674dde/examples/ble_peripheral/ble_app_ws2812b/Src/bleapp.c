@@ -269,17 +269,6 @@ static void on_yys_evt(ble_yy_service_t     * p_yy_service,
 }
 */
 
-// ----------------------------------------------------------------------------
-/// \brief     Callback function
-///
-/// \param     [in]  p_lbs     Instance of LED Button Service to which the write applies.
-/// \param     [in]  led_state Written/desired state of the LED.
-///
-/// \return    none
-static void ws2812b_write_handler( uint16_t conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t new_state )
-{
-
-}
 
 /**@brief Function for initializing services that will be used by the application.
  */
@@ -293,20 +282,12 @@ static void services_init( void )
 
     err_code = nrf_ble_qwr_init(&m_qwr, &qwr_init);
     APP_ERROR_CHECK(err_code);
-    
-   // Initialize LBS.
-   //init.led_write_handler = led_write_handler;
-   
+
    //err_code = ble_lbs_init(&m_lbs, &init);
    APP_ERROR_CHECK(err_code);
-   
-   // rdm
-   ble_ws2812b_init_t initWs2812bService = {0};
-   
-   // Initialize LBS.
-   initWs2812bService.ws2812b_evt_handler = ws2812b_write_handler;
 
-   err_code = bleapp_services_ws2812b(&m_ws2812bService, &initWs2812bService);
+   // ws2812b controller service
+   err_code = bleapp_services_ws2812b(&m_ws2812bService);
    APP_ERROR_CHECK(err_code);
 
     /* YOUR_JOB: Add code to initialize the services used by the application.

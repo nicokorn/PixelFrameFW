@@ -181,6 +181,11 @@ void WS2812B_clearBuffer( void )
 /// \return     none
 void WS2812B_setPixel( uint16_t pixel_pos, uint8_t red, uint8_t green, uint8_t blue )
 {
+  if( pixel_pos>PIXEL_COUNT )
+  {
+    return;
+  }
+  
   for( uint8_t i=0; i<8; i++)
   {
     if( (0x80 & (red<<i)) == 0x80 )

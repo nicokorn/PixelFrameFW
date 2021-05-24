@@ -69,15 +69,6 @@ void bleapp_services_init ( void );
 // Forward declaration of the ble_lbs_t type.
 typedef struct ble_ws2812b_service_s ble_ws2812b_service_t;
 
-typedef void (*ble_ws2812b_evt_handler_t) (uint16_t conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t new_state);
-
-/** @brief LED Button Service init structure. This structure contains all options and data needed for
- *        initialization of the service.*/
-typedef struct
-{
-    ble_ws2812b_evt_handler_t ws2812b_evt_handler; /**< Event handler to be called when the LED Characteristic is written. */
-} ble_ws2812b_init_t;
-
 /**@brief UV Service structure. This structure contains various status information for the uv service. */
 struct ble_ws2812b_service_s
 {
@@ -88,7 +79,6 @@ struct ble_ws2812b_service_s
    ble_gatts_char_handles_t      pixel_char_handles;     /**< Handles related to column Characteristic. */
    ble_gatts_char_handles_t      picture_char_handles;   /**< Handles related to data Characteristic. */
    uint8_t                       uuid_type;              /**< UUID type for the ws2812b controller Service. */
-   ble_ws2812b_evt_handler_t     ws2812b_evt_handler;    /**< Event handler to be called when the UV LED Characteristic is written. */
 };
 
 
@@ -101,7 +91,7 @@ struct ble_ws2812b_service_s
  *
  * @retval NRF_SUCCESS If the service was initialized successfully. Otherwise, an error code is returned.
  */
-uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs, const ble_ws2812b_init_t * p_lbs_init );
+uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs );
 
 
 /**@brief Function for handling the application's BLE stack events.

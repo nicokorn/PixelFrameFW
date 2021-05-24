@@ -33,6 +33,7 @@
 #include "ble_hci.h"
 #include "ble_srv_common.h"
 #include "sdk_common.h"
+#include "ws2812b.h"
 
 // Private define *************************************************************
 
@@ -90,8 +91,15 @@ static void on_write( ble_ws2812b_service_t * p_lbs, ble_evt_t const * p_ble_evt
    else if(   (p_evt_write->handle == p_lbs->pixel_char_handles.value_handle)
       && (p_evt_write->len == 7))
    {
-      //WS2812B_setPixel(++i%PIXEL_COUNT, 0x00,0x00,0xff);//rand()%0xFF,rand()%0xFF,rand()%0xFF
-      //WS2812B_sendBuffer();
+      static uint32_t i;
+      uint16_t col = *(uint16_t*)&p_evt_write->data[0];
+      uint16_t row = *(uint16_t*)&p_evt_write->data[2];
+      uint8_t r = p_evt_write->data[4];
+      uint8_t g = p_evt_write->data[5];
+      uint8_t b = p_evt_write->data[6];
+      //WS2812B_setPixel( col, r, g, b );
+      WS2812B_clearBuffer();
+      WS2812B_setPixel(++i%PIXEL_COUNT, 0x00,0x00,0xff);//rand()%0xFF,rand()%0xFF,rand()%0xFF
    }
 }
 
@@ -102,15 +110,12 @@ static void on_write( ble_ws2812b_service_t * p_lbs, ble_evt_t const * p_ble_evt
 /// \param     [in] p_lbs_init 
 ///
 /// \return    err_code
-uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs, const ble_ws2812b_init_t * p_lbs_init )
+uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
 {
    uint32_t              err_code;
    ble_uuid_t            ble_uuid;
    ble_add_char_params_t add_char_params;
-   
-   // Initialize service structure.
-   p_lbs->ws2812b_evt_handler = p_lbs_init->ws2812b_evt_handler;
-   
+
    // Add service.
    ble_uuid128_t base_uuid      = UUID_BASE;
    err_code                     = sd_ble_uuid_vs_add( &base_uuid, &p_lbs->uuid_type );
