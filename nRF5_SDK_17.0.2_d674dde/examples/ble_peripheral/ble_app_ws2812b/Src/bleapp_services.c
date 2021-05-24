@@ -97,9 +97,7 @@ static void on_write( ble_ws2812b_service_t * p_lbs, ble_evt_t const * p_ble_evt
       uint8_t r = p_evt_write->data[4];
       uint8_t g = p_evt_write->data[5];
       uint8_t b = p_evt_write->data[6];
-      //WS2812B_setPixel( col, r, g, b );
-      WS2812B_clearBuffer();
-      WS2812B_setPixel(++i%PIXEL_COUNT, 0x00,0x00,0xff);//rand()%0xFF,rand()%0xFF,rand()%0xFF
+      WS2812B_setPixel( col, r, g, b );
    }
 }
 
@@ -127,7 +125,7 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
    err_code = sd_ble_gatts_service_add( BLE_GATTS_SRVC_TYPE_PRIMARY, &ble_uuid, &p_lbs->service_handle );
    VERIFY_SUCCESS(err_code);
    
-   // Add start uv process characteristic.
+   // Add command characteristic.
    memset(&add_char_params, 0, sizeof(add_char_params));
    add_char_params.uuid             = UUID_WS2812B_CMD_CHAR;
    add_char_params.uuid_type        = p_lbs->uuid_type;
@@ -146,17 +144,17 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
       return err_code;
    }
    
-   // Add button characteristic.
+   // Add row characteristic.
    memset(&add_char_params, 0, sizeof(add_char_params));
    add_char_params.uuid                = UUID_WS2812B_ROW_CHAR;
    add_char_params.uuid_type           = p_lbs->uuid_type;
    add_char_params.init_len            = sizeof(uint16_t);
    add_char_params.max_len             = sizeof(uint16_t);
    add_char_params.char_props.read     = 1;
-   add_char_params.char_props.write    = 0;
+   add_char_params.char_props.notify   = 1;
    
    add_char_params.read_access         = SEC_OPEN;
-   add_char_params.write_access        = SEC_OPEN;
+   add_char_params.cccd_write_access   = SEC_OPEN;
    
    err_code = characteristic_add(p_lbs->service_handle, &add_char_params, &p_lbs->row_char_handles);
    
@@ -165,17 +163,17 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
       return err_code;
    }
    
-   // Add UV led characteristic.
+   // Add col characteristic.
    memset(&add_char_params, 0, sizeof(add_char_params));
    add_char_params.uuid                = UUID_WS2812B_COL_CHAR;
    add_char_params.uuid_type           = p_lbs->uuid_type;
    add_char_params.init_len            = sizeof(uint16_t);
    add_char_params.max_len             = sizeof(uint16_t);
    add_char_params.char_props.read     = 1;
-   add_char_params.char_props.write    = 0;
+   add_char_params.char_props.notify   = 1;
    
    add_char_params.read_access         = SEC_OPEN;
-   add_char_params.write_access        = SEC_OPEN;
+   add_char_params.cccd_write_access   = SEC_OPEN;
    
    err_code = characteristic_add(p_lbs->service_handle, &add_char_params, &p_lbs->col_char_handles);
    
@@ -184,7 +182,7 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
       return err_code;
    }
    
-   // Add uv duration left characteristic.
+   // Add pixel characteristic.
    memset(&add_char_params, 0, sizeof(add_char_params));
    add_char_params.uuid                = UUID_WS2812B_PIXEL_CHAR;
    add_char_params.uuid_type           = p_lbs->uuid_type;
@@ -198,7 +196,7 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
    
    err_code = characteristic_add(p_lbs->service_handle, &add_char_params, &p_lbs->pixel_char_handles);
    
-   // Add uv duration left characteristic.
+   // Add picture characteristic.
    memset(&add_char_params, 0, sizeof(add_char_params));
    add_char_params.uuid                = UUID_WS2812B_PICTURE_CHAR;
    add_char_params.uuid_type           = p_lbs->uuid_type;

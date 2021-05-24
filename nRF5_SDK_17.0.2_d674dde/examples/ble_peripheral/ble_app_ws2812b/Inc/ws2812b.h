@@ -56,6 +56,8 @@
 #define PIXEL_COUNT              ( 18u )
 #define WS2812B_PIN              ( 4u )
 #define WS2812B_PORT             ( 0u )
+#define COLS                     PIXEL_COUNT
+#define ROWS                     ( 1u )
 #endif
 
 #ifdef ONBOARD_LED

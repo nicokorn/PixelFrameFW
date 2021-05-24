@@ -68,6 +68,7 @@
 #include "nrf_ble_qwr.h"
 #include "nrf_pwr_mgmt.h"
 #include "ws2812b.h"
+#include "bleapp.h"
 #include "bleapp_services.h"
 #include "nrf_delay.h"
 
@@ -454,6 +455,7 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
             m_conn_handle = p_ble_evt->evt.gap_evt.conn_handle;
             err_code = nrf_ble_qwr_conn_handle_assign(&m_qwr, m_conn_handle);
             APP_ERROR_CHECK(err_code);
+            bleapp_serviceSetResolution((uint16_t)COLS, (uint16_t)ROWS);
             break;
 
         case BLE_GAP_EVT_PHY_UPDATE_REQUEST:
@@ -700,6 +702,39 @@ static void advertising_start(bool erase_bonds)
 
         APP_ERROR_CHECK(err_code);
     }
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Set resolution on ble service
+///
+/// \param     [in]  uint16_t col
+/// \param     [in]  uint16_t row
+///
+/// \return    none
+void bleapp_serviceSetResolution( uint16_t col, uint16_t row )
+{
+   ret_code_t err_code;
+   
+   if( m_conn_handle != BLE_CONN_HANDLE_INVALID )
+   {
+      err_code = bleapp_services_setCharNotify( m_conn_handle, m_ws2812bService.col_char_handles.value_handle, (uint8_t*)&col, sizeof(uint16_t) );
+      if (err_code != NRF_SUCCESS &&
+         err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+         err_code != NRF_ERROR_INVALID_STATE &&
+         err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+      {
+         APP_ERROR_CHECK(err_code);
+      }
+      
+      err_code = bleapp_services_setCharNotify( m_conn_handle, m_ws2812bService.row_char_handles.value_handle, (uint8_t*)&row, sizeof(uint16_t) );
+      if (err_code != NRF_SUCCESS &&
+         err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+         err_code != NRF_ERROR_INVALID_STATE &&
+         err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+      {
+         APP_ERROR_CHECK(err_code);
+      }
+   }
 }
 
 

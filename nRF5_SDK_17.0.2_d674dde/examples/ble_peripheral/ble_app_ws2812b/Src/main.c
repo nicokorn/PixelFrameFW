@@ -69,7 +69,7 @@
 /// \param     none
 ///
 /// \return    none
-int main(void)
+ int main(void)
 {
    bool erase_bonds;
     
@@ -78,19 +78,13 @@ int main(void)
    WS2812B_init();
    bleapp_init();
    
-
+   WS2812B_clearBuffer();
+   WS2812B_sendBuffer();
+   
    // Enter main loop.
    for (;;)
    {
-      //idle_state_handle();
-      //WS2812B_clearBuffer();
-      //WS2812B_setPixel(++i%PIXEL_COUNT, 0x00,0x00,0xff);//rand()%0xFF,rand()%0xFF,rand()%0xFF
       WS2812B_sendBuffer();
       nrf_delay_ms(100); 
    }
 }
-
-
-/**
- * @}
- */
