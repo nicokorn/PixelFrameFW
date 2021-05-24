@@ -75,7 +75,7 @@ typedef void (*ble_ws2812b_evt_handler_t) (uint16_t conn_handle, ble_ws2812b_ser
  *        initialization of the service.*/
 typedef struct
 {
-    ble_ws2812b_evt_handler_t ws2812b_evt_handler; /**< Event handler when Characteristic is written. */
+    ble_ws2812b_evt_handler_t ws2812b_evt_handler; /**< Event handler to be called when the LED Characteristic is written. */
 } ble_ws2812b_init_t;
 
 /**@brief UV Service structure. This structure contains various status information for the uv service. */
@@ -88,7 +88,7 @@ struct ble_ws2812b_service_s
    ble_gatts_char_handles_t      pixel_char_handles;     /**< Handles related to column Characteristic. */
    ble_gatts_char_handles_t      picture_char_handles;   /**< Handles related to data Characteristic. */
    uint8_t                       uuid_type;              /**< UUID type for the ws2812b controller Service. */
-   ble_ws2812b_evt_handler_t     ws2812b_evt_handler;    /**< Event handler to be called when ws2812b characteristics are written. */
+   ble_ws2812b_evt_handler_t     ws2812b_evt_handler;    /**< Event handler to be called when the UV LED Characteristic is written. */
 };
 
 

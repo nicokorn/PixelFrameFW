@@ -68,6 +68,7 @@
 #include "nrf_ble_qwr.h"
 #include "nrf_pwr_mgmt.h"
 #include "ws2812b.h"
+#include "bleapp_services.h"
 #include "nrf_delay.h"
 
 #include "nrf_log.h"
@@ -123,6 +124,7 @@ static ble_uuid_t m_adv_uuids[] =                                               
 
 
 static void advertising_start(bool erase_bonds);
+static void ws2812b_write_handler( uint16_t conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t new_state );
 
 
 /**@brief Callback function for asserts in the SoftDevice.
@@ -267,6 +269,18 @@ static void on_yys_evt(ble_yy_service_t     * p_yy_service,
 }
 */
 
+// ----------------------------------------------------------------------------
+/// \brief     Callback function
+///
+/// \param     [in]  p_lbs     Instance of LED Button Service to which the write applies.
+/// \param     [in]  led_state Written/desired state of the LED.
+///
+/// \return    none
+static void ws2812b_write_handler( uint16_t conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t new_state )
+{
+
+}
+
 /**@brief Function for initializing services that will be used by the application.
  */
 static void services_init( void )
@@ -287,12 +301,12 @@ static void services_init( void )
    APP_ERROR_CHECK(err_code);
    
    // rdm
-   ble_uvstart_init_t initUvService = {0};
+   ble_ws2812b_init_t initWs2812bService = {0};
    
    // Initialize LBS.
-   initUvService.ws2812b_evt_handler = ws2812b_evt_handler;
+   initWs2812bService.ws2812b_evt_handler = ws2812b_write_handler;
 
-   err_code = bleapp_services_uvInit(&m_uvService, &initUvService);
+   err_code = bleapp_services_ws2812b(&m_ws2812bService, &initWs2812bService);
    APP_ERROR_CHECK(err_code);
 
     /* YOUR_JOB: Add code to initialize the services used by the application.
