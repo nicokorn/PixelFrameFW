@@ -1,0 +1,1143 @@
+###############################################################################
+#
+# IAR ELF Linker V9.10.1.308/W64 for ARM                  10/May/2021  18:39:33
+# Copyright 2007-2021 IAR Systems AB.
+#
+#    Output file  =
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\ble_app_blinky_pca10056_s140.out
+#    Map file     =
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\ble_app_blinky_pca10056_s140.map
+#    Command line =
+#        -f
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\ble_app_blinky_pca10056_s140.out.rsp
+#        (D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\app_button.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\app_error.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\app_error_handler_iar.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\app_error_weak.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\app_scheduler.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\app_timer2.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\app_util_platform.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE\ble_advdata.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE\ble_conn_params.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE\ble_conn_state.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE_Services\ble_lbs.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE\ble_srv_common.o
+#        "D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\Board
+#        Definition\boards.o"
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\drv_rtc.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\hardfault_implementation.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\None\iar_startup_nrf52840.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\Application\main.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_assert.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_atfifo.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_atflags.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_atomic.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_balloc.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE\nrf_ble_gatt.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE\nrf_ble_qwr.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Drivers\nrf_drv_clock.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Drivers\nrf_drv_uart.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_fprintf.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_fprintf_format.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Log\nrf_log_backend_rtt.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Log\nrf_log_backend_serial.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Log\nrf_log_backend_uart.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Log\nrf_log_default_backends.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Log\nrf_log_frontend.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Log\nrf_log_str_formatter.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_memobj.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_pwr_mgmt.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_ringbuf.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_SoftDevice\nrf_sdh.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_SoftDevice\nrf_sdh_ble.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_SoftDevice\nrf_sdh_soc.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_section_iter.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_sortlist.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries\nrf_strerror.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Drivers\nrfx_atomic.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Drivers\nrfx_clock.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Drivers\nrfx_gpiote.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Drivers\nrfx_prs.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Drivers\nrfx_uart.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Drivers\nrfx_uarte.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Segger_RTT\SEGGER_RTT.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Segger_RTT\SEGGER_RTT_printf.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Segger_RTT\SEGGER_RTT_Syscalls_IAR.o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\None\system_nrf52840.o
+#        "D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\UTF8\UTF16
+#        converter\utf.o" --redirect _Printf=_PrintfFull --redirect
+#        _Scanf=_ScanfFull --no_out_extension -o
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\ble_app_blinky_pca10056_s140.out
+#        --map
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\ble_app_blinky_pca10056_s140.map
+#        --config
+#        D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\ble_app_blinky_iar_nRF5x.icf
+#        --warnings_are_errors --entry __iar_program_start --inline --vfe
+#        --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because some modules are built with
+size limitations (and not runtime checking), and --advanced_heap
+was not specified.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x2'7000 { ro section .intvec };
+define block RO_END with size = 0, alignment = 8 { };
+"P1":  place in [from 0x2'7000 to 0xf'ffff] { ro, block RO_END };
+define block CSTACK with size = 8K, alignment = 8 { };
+define block HEAP with size = 8K, alignment = 8 { };
+"P2":  place in [from 0x2000'2300 to 0x2003'ffff] {
+          rw, block CSTACK, block HEAP };
+initialize by copy { rw };
+keep { section .intvec };
+
+  Section                 Kind         Address    Size  Object
+  -------                 ----         -------    ----  ------
+"A0":                                            0x200
+  .intvec                 ro code     0x2'7000   0x200  iar_startup_nrf52840.o [3]
+                                    - 0x2'7200   0x200
+
+"P1":                                           0x54be
+  .text                   ro code     0x2'7200   0x590  nrf_log_frontend.o [9]
+  .text                   ro code     0x2'7790   0x158  nrf_memobj.o [8]
+  .text                   ro code     0x2'78e8    0x12  nrf_ringbuf.o [8]
+  .text                   ro code     0x2'78fa    0x76  lz77_init_single.o [14]
+  .text                   ro code     0x2'7970    0x98  nrf_atomic.o [8]
+  .text                   ro code     0x2'7a08    0x70  app_util_platform.o [8]
+  .text                   ro code     0x2'7a78    0xa4  nrf_balloc.o [8]
+  .text                   ro code     0x2'7b1c    0x18  ABImemcpy_small.o [14]
+  .text                   ro code     0x2'7b34   0x56c  nrfx_gpiote.o [7]
+  .text                   ro code     0x2'80a0     0x6  ABImemclr4.o [14]
+  .rodata                 const       0x2'80a6     0x2  xlocale_c.o [12]
+  .text                   ro code     0x2'80a8    0x32  ABImemset48.o [14]
+  .text                   ro code     0x2'80da     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'80dc   0x528  nrfx_uart.o [7]
+  .text                   ro code     0x2'8604    0x58  nrfx_prs.o [7]
+  .text                   ro code     0x2'865c   0x4f0  nrfx_uarte.o [7]
+  .text                   ro code     0x2'8b4c   0x408  ble_advdata.o [5]
+  .text                   ro code     0x2'8f54   0x3fe  main.o [1]
+  .text                   ro code     0x2'9352     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'9354    0x1e  app_error.o [8]
+  .text                   ro code     0x2'9372     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'9374    0xf0  boards.o [2]
+  .text                   ro code     0x2'9464   0x100  nrf_ble_qwr.o [5]
+  .text                   ro code     0x2'9564   0x28c  app_button.o [8]
+  .text                   ro code     0x2'97f0   0x118  ble_lbs.o [6]
+  .text                   ro code     0x2'9908    0x20  nrf_log_default_backends.o [9]
+  .text                   ro code     0x2'9928   0x2fc  app_timer2.o [8]
+  .text                   ro code     0x2'9c24    0x6c  nrf_pwr_mgmt.o [8]
+  .text                   ro code     0x2'9c90   0x1ac  nrf_sdh.o [11]
+  .text                   ro code     0x2'9e3c   0x1fc  nrf_sdh_ble.o [11]
+  .text                   ro code     0x2'a038   0x288  nrf_ble_gatt.o [5]
+  .text                   ro code     0x2'a2c0   0x24c  ble_conn_params.o [5]
+  .text                   ro code     0x2'a50c    0x68  app_error_weak.o [8]
+  .text                   ro code     0x2'a574    0x22  I64Shl.o [14]
+  .text                   ro code     0x2'a596     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'a598   0x1f8  ble_srv_common.o [5]
+  .text                   ro code     0x2'a790    0xf0  nrf_log_backend_uart.o [9]
+  .text                   ro code     0x2'a880   0x2c8  drv_rtc.o [8]
+  .text                   ro code     0x2'ab48    0x4a  nrf_sortlist.o [8]
+  .text                   ro code     0x2'ab92     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'ab94   0x104  nrf_atfifo.o [8]
+  .text                   ro code     0x2'ac98    0x46  nrf_section_iter.o [8]
+  .text                   ro code     0x2'acde     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'ace0    0x5c  nrf_strerror.o [8]
+  .text                   ro code     0x2'ad3c    0x8c  nrf_drv_uart.o [7]
+  .text                   ro code     0x2'adc8    0xcc  nrf_log_backend_serial.o [9]
+  .text                   ro code     0x2'ae94   0x224  nrf_log_str_formatter.o [9]
+  .text                   ro code     0x2'b0b8    0x40  nrf_fprintf.o [8]
+  .text                   ro code     0x2'b0f8    0x14  isalpha.o [12]
+  .text                   ro code     0x2'b10c    0x14  ispunct.o [12]
+  .text                   ro code     0x2'b120   0x31c  nrf_fprintf_format.o [8]
+  .text                   ro code     0x2'b43c    0x48  xlocale_c.o [12]
+  .text                   ro code     0x2'b484    0x14  strlen_small.o [14]
+  .text                   ro code     0x2'b498   0x194  system_nrf52840.o [3]
+  .rodata                 const       0x2'b62c   0x188  nrf_sdh_ble.o [11]
+  .text                   ro code     0x2'b7b4   0x140  ble_conn_state.o [5]
+  .text                   ro code     0x2'b8f4    0x3c  nrf_atflags.o [8]
+  .rodata                 const       0x2'b930   0x128  nrf_strerror.o [8]
+  .text                   ro code     0x2'ba58   0x118  nrf_drv_clock.o [7]
+  .text                   ro code     0x2'bb70    0xbc  nrfx_clock.o [7]
+  .rodata                 const       0x2'bc2c    0xe4  nrf_ble_gatt.o [5]
+  .rodata                 const       0x2'bd10    0x90  nrf_sdh_ble.o [11]
+  log_const_data                      0x2'bda0    0x78  <Block>
+    log_const_data        const       0x2'bda0     0x8  app_button.o [8]
+    log_const_data        const       0x2'bda8     0x8  app_timer2.o [8]
+    log_const_data        const       0x2'bdb0     0x8  nrf_ble_gatt.o [5]
+    log_const_data        const       0x2'bdb8     0x8  nrf_drv_clock.o [7]
+    log_const_data        const       0x2'bdc0     0x8  nrf_log_frontend.o [9]
+    log_const_data        const       0x2'bdc8     0x8  nrf_pwr_mgmt.o [8]
+    log_const_data        const       0x2'bdd0     0x8  nrf_sdh.o [11]
+    log_const_data        const       0x2'bdd8     0x8  nrf_sdh_ble.o [11]
+    log_const_data        const       0x2'bde0     0x8  nrf_sdh_soc.o [11]
+    log_const_data        const       0x2'bde8     0x8  nrf_sortlist.o [8]
+    log_const_data        const       0x2'bdf0     0x8  nrfx_clock.o [7]
+    log_const_data        const       0x2'bdf8     0x8  nrfx_gpiote.o [7]
+    log_const_data        const       0x2'be00     0x8  nrfx_prs.o [7]
+    log_const_data        const       0x2'be08     0x8  nrfx_uart.o [7]
+    log_const_data        const       0x2'be10     0x8  nrfx_uarte.o [7]
+  .rodata                 const       0x2'be18    0x64  nrf_ble_gatt.o [5]
+  .text                   ro code     0x2'be7c    0x44  nrf_sdh_soc.o [11]
+  .text                   ro code     0x2'bec0    0x38  zero_init3.o [14]
+  .rodata                 const       0x2'bef8    0x2c  nrf_strerror.o [8]
+  .rodata                 const       0x2'bf24    0x28  nrf_strerror.o [8]
+  .rodata                 const       0x2'bf4c    0x28  nrf_strerror.o [8]
+  .text                   ro code     0x2'bf74    0x28  data_init.o [14]
+  .rodata                 const       0x2'bf9c    0x24  drv_rtc.o [8]
+  .rodata                 const       0x2'bfc0    0x24  nrf_strerror.o [8]
+  .rodata                 const       0x2'bfe4    0x24  nrf_strerror.o [8]
+  .rodata                 const       0x2'c008    0x24  nrf_strerror.o [8]
+  .rodata                 const       0x2'c02c    0x24  nrf_strerror.o [8]
+  .rodata                 const       0x2'c050    0x24  nrf_strerror.o [8]
+  .text                   ro code     0x2'c074    0x22  fpinit_M.o [13]
+  .iar.init_table         const       0x2'c098    0x20  - Linker created -
+  .text                   ro code     0x2'c0b8     0x2  iar_startup_nrf52840.o [3]
+  .rodata                 const       0x2'c0bc    0x20  nrf_sdh_ble.o [11]
+  .rodata                 const       0x2'c0dc    0x20  nrf_strerror.o [8]
+  .rodata                 const       0x2'c0fc    0x20  nrf_strerror.o [8]
+  .rodata                 const       0x2'c11c    0x20  nrf_strerror.o [8]
+  .rodata                 const       0x2'c13c    0x20  nrf_strerror.o [8]
+  .rodata                 const       0x2'c15c    0x20  nrf_strerror.o [8]
+  .text                   ro code     0x2'c17c    0x1e  cmain.o [14]
+  .text                   ro code     0x2'c19a     0x4  exit.o [12]
+  .text                   ro code     0x2'c19e     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c1a0     0xa  cexit.o [14]
+  .text                   ro code     0x2'c1aa     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c1ac     0xc  XXexit.o [14]
+  .rodata                 const       0x2'c1b8    0x1c  app_error_weak.o [8]
+  .rodata                 const       0x2'c1d4    0x1c  nrf_strerror.o [8]
+  .rodata                 const       0x2'c1f0    0x1c  nrf_strerror.o [8]
+  .rodata                 const       0x2'c20c    0x1c  nrf_strerror.o [8]
+  .rodata                 const       0x2'c228    0x1c  nrf_strerror.o [8]
+  .rodata                 const       0x2'c244    0x1c  nrf_strerror.o [8]
+  .text                   ro code     0x2'c260    0x1c  cstartup_M.o [14]
+  .rodata                 const       0x2'c27c    0x18  nrf_pwr_mgmt.o [8]
+  .rodata                 const       0x2'c294    0x18  nrf_strerror.o [8]
+  .rodata                 const       0x2'c2ac    0x18  nrf_strerror.o [8]
+  .rodata                 const       0x2'c2c4    0x18  nrf_strerror.o [8]
+  .rodata                 const       0x2'c2dc    0x18  nrf_strerror.o [8]
+  .rodata                 const       0x2'c2f4    0x18  nrf_strerror.o [8]
+  .rodata                 const       0x2'c30c    0x18  nrf_strerror.o [8]
+  .rodata                 const       0x2'c324    0x18  nrf_strerror.o [8]
+  .rodata                 const       0x2'c33c    0x18  nrf_strerror.o [8]
+  .rodata                 const       0x2'c354    0x18  nrf_strerror.o [8]
+  .rodata                 const       0x2'c36c    0x14  nrf_log_default_backends.o [9]
+  .rodata                 const       0x2'c380    0x14  nrf_strerror.o [8]
+  .rodata                 const       0x2'c394    0x14  nrf_strerror.o [8]
+  .rodata                 const       0x2'c3a8    0x14  nrf_strerror.o [8]
+  .rodata                 const       0x2'c3bc    0x14  nrf_strerror.o [8]
+  .rodata                 const       0x2'c3d0    0x14  nrf_strerror.o [8]
+  .rodata                 const       0x2'c3e4    0x14  nrf_strerror.o [8]
+  .rodata                 const       0x2'c3f8    0x14  nrf_strerror.o [8]
+  nrf_balloc              const       0x2'c40c    0x14  nrf_log_frontend.o [9]
+  .rodata                 const       0x2'c420    0x10  nrf_ble_gatt.o [5]
+  .rodata                 const       0x2'c430    0x10  nrf_sdh.o [11]
+  .rodata                 const       0x2'c440    0x10  nrf_sdh.o [11]
+  .rodata                 const       0x2'c450    0x10  nrf_sdh.o [11]
+  .rodata                 const       0x2'c460    0x10  nrf_sdh_soc.o [11]
+  .rodata                 const       0x2'c470    0x10  nrf_strerror.o [8]
+  .rodata                 const       0x2'c480    0x10  nrf_strerror.o [8]
+  .text                   ro code     0x2'c490    0x10  iar_startup_nrf52840.o [3]
+  log_backends            const       0x2'c4a0    0x10  nrf_log_default_backends.o [9]
+  sdh_ble_observers1                  0x2'c4b0    0x10  <Block>
+    sdh_ble_observers1    const       0x2'c4b0     0x8  ble_conn_params.o [5]
+    sdh_ble_observers1    const       0x2'c4b8     0x8  main.o [1]
+  sdh_ble_observers2                  0x2'c4c0    0x10  <Block>
+    sdh_ble_observers2    const       0x2'c4c0     0x8  main.o [1]
+    sdh_ble_observers2    const       0x2'c4c8     0x8  main.o [1]
+  sdh_stack_observers0                0x2'c4d0    0x10  <Block>
+    sdh_stack_observers0  const       0x2'c4d0     0x8  nrf_sdh_ble.o [11]
+    sdh_stack_observers0  const       0x2'c4d8     0x8  nrf_sdh_soc.o [11]
+  .rodata                 const       0x2'c4e0     0xc  app_button.o [8]
+  .rodata                 const       0x2'c4ec     0xc  app_timer2.o [8]
+  .rodata                 const       0x2'c4f8     0xc  nrf_log_backend_uart.o [9]
+  .rodata                 const       0x2'c504     0xc  nrf_pwr_mgmt.o [8]
+  .rodata                 const       0x2'c510     0xc  nrf_sdh_ble.o [11]
+  .rodata                 const       0x2'c51c     0xc  nrf_sdh_soc.o [11]
+  .rodata                 const       0x2'c528     0xc  nrf_sortlist.o [8]
+  .rodata                 const       0x2'c534     0xc  nrf_strerror.o [8]
+  .rodata                 const       0x2'c540     0x8  nrf_drv_clock.o [7]
+  .rodata                 const       0x2'c548     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c550     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c558     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c560     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c568     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c570     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c578     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c580     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c588     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c590     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c598     0x8  nrf_log_str_formatter.o [9]
+  .rodata                 const       0x2'c5a0     0x8  nrf_sdh.o [11]
+  .rodata                 const       0x2'c5a8     0x8  nrfx_clock.o [7]
+  .rodata                 const       0x2'c5b0     0x8  nrfx_gpiote.o [7]
+  .rodata                 const       0x2'c5b8     0x8  nrfx_uart.o [7]
+  .rodata                 const       0x2'c5c0     0x8  nrfx_uarte.o [7]
+  sdh_ble_observers0                  0x2'c5c8     0x8  <Block>
+    sdh_ble_observers0    const       0x2'c5c8     0x8  ble_conn_state.o [5]
+  sdh_ble_observers3                  0x2'c5d0     0x8  <Block>
+    sdh_ble_observers3    const       0x2'c5d0     0x8  main.o [1]
+  sdh_soc_observers0                  0x2'c5d8     0x8  <Block>
+    sdh_soc_observers0    const       0x2'c5d8     0x8  nrf_drv_clock.o [7]
+  sdh_state_observers0                0x2'c5e0     0x8  <Block>
+    sdh_state_observers0  const       0x2'c5e0     0x8  nrf_drv_clock.o [7]
+  .rodata                 const       0x2'c5e8     0x4  nrf_log_frontend.o [9]
+  .rodata                 const       0x2'c5ec     0x4  nrfx_prs.o [7]
+  .text                   ro code     0x2'c5f0     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c5f2     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c5f4     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c5f6     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c5f8     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c5fa     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c5fc     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c5fe     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c600     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c602     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c604     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c606     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c608     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c60a     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c60c     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c60e     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c610     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c612     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c614     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c616     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c618     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c61a     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c61c     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c61e     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c620     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c622     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c624     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c626     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c628     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c62a     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c62c     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c62e     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c630     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c632     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c634     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c636     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c638     0x2  iar_startup_nrf52840.o [3]
+  .text                   ro code     0x2'c63a     0x2  iar_startup_nrf52840.o [3]
+  .rodata                 const       0x2'c63c     0x0  zero_init3.o [14]
+  .rodata                 const       0x2'c63c     0x0  lz77_init_single.o [14]
+  Initializer bytes       const       0x2'c63c    0x82  <for P2-1>
+                                    - 0x2'c6be  0x54be
+
+"P2", part 1 of 3:                               0x180
+  P2-1                             0x2000'2300   0x180  <Init block>
+    .data                 inited   0x2000'2300    0x88  app_timer2.o [8]
+    .data                 inited   0x2000'2388    0x54  main.o [1]
+    .data                 inited   0x2000'23dc    0x18  nrf_log_backend_uart.o [9]
+    .data                 inited   0x2000'23f4     0x8  nrf_log_default_backends.o [9]
+    .data                 inited   0x2000'23fc    0x38  nrf_log_str_formatter.o [9]
+    .data                 inited   0x2000'2434     0x4  system_nrf52840.o [3]
+    .data                 inited   0x2000'2438    0x48  xlocale_c.o [12]
+                                 - 0x2000'2480   0x180
+
+"P2", part 2 of 3:                               0x860
+  .bss                    zero     0x2000'2480   0x420  nrf_log_frontend.o [9]
+  .bss                    zero     0x2000'28a0    0xc0  nrf_log_frontend.o [9]
+  .bss                    zero     0x2000'2960    0x80  nrf_log_frontend.o [9]
+  .bss                    zero     0x2000'29e0    0x7c  ble_conn_state.o [5]
+  .bss                    zero     0x2000'2a5c    0x6c  nrfx_gpiote.o [7]
+  .bss                    zero     0x2000'2ac8    0x58  app_button.o [8]
+  .bss                    zero     0x2000'2b20    0x40  ble_conn_params.o [5]
+  .bss                    zero     0x2000'2b60    0x40  nrf_log_backend_uart.o [9]
+  .bss                    zero     0x2000'2ba0    0x2c  nrfx_uart.o [7]
+  .bss                    zero     0x2000'2bcc    0x24  nrfx_uarte.o [7]
+  .bss                    zero     0x2000'2bf0    0x20  main.o [1]
+  .bss                    zero     0x2000'2c10    0x20  main.o [1]
+  .bss                    zero     0x2000'2c30    0x1c  ble_conn_params.o [5]
+  .bss                    zero     0x2000'2c4c    0x18  nrf_log_frontend.o [9]
+  .bss                    zero     0x2000'2c64    0x14  nrf_drv_clock.o [7]
+  .bss                    zero     0x2000'2c78    0x14  nrf_drv_uart.o [7]
+  .bss                    zero     0x2000'2c8c    0x14  nrf_pwr_mgmt.o [8]
+  .bss                    zero     0x2000'2ca0     0xc  app_util_platform.o [8]
+  .bss                    zero     0x2000'2cac     0xc  drv_rtc.o [8]
+  .bss                    zero     0x2000'2cb8     0x8  nrf_log_frontend.o [9]
+  .bss                    zero     0x2000'2cc0     0x8  nrf_log_frontend.o [9]
+  .bss                    zero     0x2000'2cc8     0x8  nrfx_clock.o [7]
+  .bss                    zero     0x2000'2cd0     0x8  nrfx_prs.o [7]
+  .bss                    zero     0x2000'2cd8     0x4  app_timer2.o [8]
+  .bss                    zero     0x2000'2cdc     0x3  nrf_sdh.o [11]
+  .bss                    zero     0x2000'2cdf     0x1  nrf_sdh_ble.o [11]
+                                 - 0x2000'2ce0   0x860
+
+"P2", part 3 of 3:                              0x2000
+  CSTACK                           0x2000'2ce0  0x2000  <Block>
+    CSTACK                uninit   0x2000'2ce0  0x2000  <Block tail>
+                                 - 0x2000'4ce0  0x2000
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+     0x2'c6be     0xf'ffff  0xd'3942
+  0x2000'4ce0  0x2003'ffff  0x3'b320
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x860:
+          0x2000'2480  0x860
+
+Copy/lz77 (__iar_lz77_init_single3)
+    1 source range, total size 0x82 (33% of destination):
+             0x2'c63c   0x82
+    1 destination range, total size 0x180:
+          0x2000'2300  0x180
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                      ro code  ro data  rw data
+    ------                      -------  -------  -------
+command line/config:
+    -----------------------------------------------------
+    Total:
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\Application: [1]
+    main.o                        1'022       60      148
+    -----------------------------------------------------
+    Total:                        1'022       60      148
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\Board Definition: [2]
+    boards.o                        240
+    -----------------------------------------------------
+    Total:                          240
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\None: [3]
+    iar_startup_nrf52840.o          622
+    system_nrf52840.o               404        1        4
+    -----------------------------------------------------
+    Total:                        1'026        1        4
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\UTF8\UTF16 converter: [4]
+    -----------------------------------------------------
+    Total:
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE: [5]
+    ble_advdata.o                 1'032
+    ble_conn_params.o               588        8       92
+    ble_conn_state.o                320        8      124
+    ble_srv_common.o                504
+    nrf_ble_gatt.o                  648      352
+    nrf_ble_qwr.o                   256
+    -----------------------------------------------------
+    Total:                        3'348      368      216
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE_Services: [6]
+    ble_lbs.o                       280
+    -----------------------------------------------------
+    Total:                          280
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Drivers: [7]
+    nrf_drv_clock.o                 280       32       20
+    nrf_drv_uart.o                  140                20
+    nrfx_clock.o                    188       16        8
+    nrfx_gpiote.o                 1'388       16      108
+    nrfx_prs.o                       88       12        8
+    nrfx_uart.o                   1'320       16       44
+    nrfx_uarte.o                  1'264       16       36
+    -----------------------------------------------------
+    Total:                        4'668      108      244
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries: [8]
+    app_button.o                    652       20       88
+    app_error.o                      30
+    app_error_weak.o                104       28
+    app_timer2.o                    764       66      140
+    app_util_platform.o             112                12
+    drv_rtc.o                       712       36       12
+    nrf_atfifo.o                    260
+    nrf_atflags.o                    60
+    nrf_atomic.o                    152
+    nrf_balloc.o                    164
+    nrf_fprintf.o                    64
+    nrf_fprintf_format.o            796
+    nrf_memobj.o                    344
+    nrf_pwr_mgmt.o                  108       44       20
+    nrf_ringbuf.o                    18
+    nrf_section_iter.o               70
+    nrf_sortlist.o                   74       20
+    nrf_strerror.o                   92    1'300
+    -----------------------------------------------------
+    Total:                        4'576    1'514      272
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Log: [9]
+    nrf_log_backend_serial.o        204
+    nrf_log_backend_uart.o          240       20       88
+    nrf_log_default_backends.o       32       39        8
+    nrf_log_frontend.o            1'424       32    1'416
+    nrf_log_str_formatter.o         548      107       56
+    -----------------------------------------------------
+    Total:                        2'448      198    1'568
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Segger_RTT: [10]
+    -----------------------------------------------------
+    Total:
+
+D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_SoftDevice: [11]
+    nrf_sdh.o                       428       64        3
+    nrf_sdh_ble.o                   508      596        1
+    nrf_sdh_soc.o                    68       44
+    -----------------------------------------------------
+    Total:                        1'004      704        4
+
+dl7M_tlf.a: [12]
+    exit.o                            4
+    isalpha.o                        20
+    ispunct.o                        20
+    xlocale_c.o                      72       27       72
+    -----------------------------------------------------
+    Total:                          116       27       72
+
+m7M_tls.a: [13]
+    fpinit_M.o                       34
+    -----------------------------------------------------
+    Total:                           34
+
+rt7M_tl.a: [14]
+    ABImemclr4.o                      6
+    ABImemcpy_small.o                24
+    ABImemset48.o                    50
+    I64Shl.o                         34
+    XXexit.o                         12
+    cexit.o                          10
+    cmain.o                          30
+    cstartup_M.o                     28
+    data_init.o                      40
+    lz77_init_single.o              118
+    strlen_small.o                   20
+    zero_init3.o                     56
+    -----------------------------------------------------
+    Total:                          428
+
+    Gaps                                       4
+    Linker created                            32    8'192
+---------------------------------------------------------
+    Grand Total:                 19'190    3'016   10'720
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base      0x2'c098          --   Gb  - Linker created -
+.iar.init_table$$Limit     0x2'c0b8          --   Gb  - Linker created -
+?main                      0x2'c17d         Code  Gb  cmain.o [14]
+CSTACK$$Base            0x2000'2ce0          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'4ce0          --   Gb  - Linker created -
+GPIOTE_IRQHandler          0x2'7f2f  0x144  Code  Gb  nrfx_gpiote.o [7]
+POWER_CLOCK_IRQHandler     0x2'bbdf   0x38  Code  Gb  nrfx_clock.o [7]
+RTC1_IRQHandler            0x2'ab01    0x8  Code  Gb  drv_rtc.o [8]
+Region$$Table$$Base        0x2'c098          --   Gb  - Linker created -
+Region$$Table$$Limit       0x2'c0b8          --   Gb  - Linker created -
+SWI2_EGU2_IRQHandler       0x2'9e13    0x2  Code  Gb  nrf_sdh.o [11]
+SystemCoreClock         0x2000'2434    0x4  Data  Gb  system_nrf52840.o [3]
+SystemInit                 0x2'b499  0x158  Code  Gb  system_nrf52840.o [3]
+UARTE0_UART0_IRQHandler
+                           0x2'8605    0x6  Code  Gb  nrfx_prs.o [7]
+_LocaleC_isalpha           0x2'b443    0xc  Code  Gb  xlocale_c.o [12]
+_LocaleC_islower           0x2'b43d    0x4  Code  Gb  xlocale_c.o [12]
+_LocaleC_ispunct           0x2'b459   0x22  Code  Gb  xlocale_c.o [12]
+_LocaleC_isupper           0x2'b441    0x2  Code  Gb  xlocale_c.o [12]
+__ICFEDIT_region_RAM_end__ {Abs}
+                        0x2003'ffff         Data  Gb  <internal module>
+__ICFEDIT_region_RAM_start__ {Abs}
+                        0x2000'2300         Data  Gb  <internal module>
+__Vectors                  0x2'7000          --   Gb  iar_startup_nrf52840.o [3]
+__Vectors_End              0x2'7200         Data  Gb  iar_startup_nrf52840.o [3]
+__Vectors_Size {Abs}          0x200          --   Gb  iar_startup_nrf52840.o [3]
+__aeabi_llsl               0x2'a575         Code  Gb  I64Shl.o [14]
+__aeabi_memclr4            0x2'80a1         Code  Gb  ABImemclr4.o [14]
+__cmain                    0x2'c17d         Code  Gb  cmain.o [14]
+__exit                     0x2'c1ad         Code  Gb  XXexit.o [14]
+__iar_Memset4_word         0x2'80a9         Code  Gb  ABImemset48.o [14]
+__iar_Memset8_word         0x2'80a9         Code  Gb  ABImemset48.o [14]
+__iar_data_init3           0x2'bf75   0x28  Code  Gb  data_init.o [14]
+__iar_globLocale        0x2000'2438   0x48  Data  Lc  xlocale_c.o [12]
+__iar_global_Locale        0x2'b47b    0x4  Code  Gb  xlocale_c.o [12]
+__iar_init_vfp             0x2'c075         Code  Gb  fpinit_M.o [13]
+__iar_lz77_init_single3
+                           0x2'78fb   0x76  Code  Gb  lz77_init_single.o [14]
+__iar_program_start        0x2'c261         Code  Gb  cstartup_M.o [14]
+__iar_small_Memcpy         0x2'7b21         Code  Gb  ABImemcpy_small.o [14]
+__iar_small_memcpy         0x2'7b1d         Code  Gb  ABImemcpy_small.o [14]
+__iar_small_memcpy4        0x2'7b1d         Code  Gb  ABImemcpy_small.o [14]
+__iar_small_memcpy8        0x2'7b1d         Code  Gb  ABImemcpy_small.o [14]
+__iar_small_strlen         0x2'b485         Code  Gb  strlen_small.o [14]
+__iar_zero_init3           0x2'bec1   0x38  Code  Gb  zero_init3.o [14]
+__sd_nvic_app_accessible_irq
+                           0x2'9c95   0x2a  Code  Lc  nrf_sdh.o [11]
+__sd_nvic_irq_disable      0x2'7a09    0x8  Code  Lc  app_util_platform.o [8]
+__vector_table             0x2'7000         Data  Gb  iar_startup_nrf52840.o [3]
+_call_main                 0x2'c189         Code  Gb  cmain.o [14]
+_exit                      0x2'c1a1         Code  Gb  cexit.o [14]
+advertising_start          0x2'8fa9   0x1c  Code  Lc  main.o [1]
+app_button_disable         0x2'979f   0x3e  Code  Gb  app_button.o [8]
+app_button_enable          0x2'977f   0x20  Code  Gb  app_button.o [8]
+app_button_init            0x2'970d   0x72  Code  Gb  app_button.o [8]
+app_error_fault_handler
+                           0x2'a50d   0x68  Code  Gb  app_error_weak.o [8]
+app_error_handler_bare     0x2'9355   0x1e  Code  Gb  app_error.o [8]
+app_timer_create           0x2'9bb5   0x18  Code  Gb  app_timer2.o [8]
+app_timer_init             0x2'9b69   0x4c  Code  Gb  app_timer2.o [8]
+app_timer_start            0x2'9bcd   0x2e  Code  Gb  app_timer2.o [8]
+app_timer_stop             0x2'9bfb    0xa  Code  Gb  app_timer2.o [8]
+app_util_critical_region_enter
+                           0x2'7a11   0x36  Code  Gb  app_util_platform.o [8]
+app_util_critical_region_exit
+                           0x2'7a47   0x22  Code  Gb  app_util_platform.o [8]
+ble_advdata_encode         0x2'8c21  0x2de  Code  Gb  ble_advdata.o [5]
+ble_conn_params_init       0x2'a383   0x54  Code  Gb  ble_conn_params.o [5]
+ble_evt_handler            0x2'a413   0xec  Code  Lc  ble_conn_params.o [5]
+ble_evt_handler            0x2'b7ff   0xf0  Code  Lc  ble_conn_state.o [5]
+ble_evt_handler            0x2'8fc5   0xb6  Code  Lc  main.o [1]
+ble_evt_handler{1}{2}{23}::phys
+                           0x2'9350    0x2  Data  Lc  main.o [1]
+ble_lbs_init               0x2'9811   0x8e  Code  Gb  ble_lbs.o [6]
+ble_lbs_on_ble_evt         0x2'97f1   0x20  Code  Gb  ble_lbs.o [6]
+ble_lbs_on_button_change
+                           0x2'98c3   0x34  Code  Gb  ble_lbs.o [6]
+ble_srv_is_notification_enabled
+                           0x2'a5a5    0x8  Code  Gb  ble_srv_common.o [5]
+ble_stack_init::m_ble_observer
+                           0x2'c5d0    0x8  Data  Lc  main.o [1]
+bsp_board_init             0x2'9411   0x4c  Code  Gb  boards.o [2]
+bsp_board_led_off          0x2'93f1    0x8  Code  Gb  boards.o [2]
+bsp_board_led_on           0x2'93e9    0x8  Code  Gb  boards.o [2]
+bsp_board_leds_off         0x2'93f9   0x12  Code  Gb  boards.o [2]
+buf_prealloc               0x2'72e9  0x10e  Code  Lc  nrf_log_frontend.o [9]
+buffer_add                 0x2'b121   0x2c  Code  Lc  nrf_fprintf_format.o [8]
+buffer_is_empty            0x2'74ab   0x12  Code  Gb  nrf_log_frontend.o [9]
+button_event_handler       0x2'907d   0x3e  Code  Lc  main.o [1]
+button_get                 0x2'9581   0x24  Code  Lc  app_button.o [8]
+buttons_init::buttons   0x2000'23d4    0x8  Data  Lc  main.o [1]
+channel_free               0x2'7d05   0x18  Code  Lc  nrfx_gpiote.o [7]
+channel_port_alloc         0x2'7cc3   0x42  Code  Lc  nrfx_gpiote.o [7]
+characteristic_add         0x2'a5e1  0x180  Code  Gb  ble_srv_common.o [5]
+clock_clk_started_notify
+                           0x2'bad1   0x24  Code  Lc  nrf_drv_clock.o [7]
+clock_irq_handler          0x2'baf5   0x18  Code  Lc  nrf_drv_clock.o [7]
+compare_func               0x2'9957   0x1a  Code  Lc  app_timer2.o [8]
+conn_handle_list_get       0x2'b7b5   0x3e  Code  Gb  ble_conn_state.o [5]
+conn_params_error_handler
+                           0x2'8fa5    0x4  Code  Lc  main.o [1]
+conn_params_negotiation
+                           0x2'a3d7   0x3c  Code  Lc  ble_conn_params.o [5]
+data_length_update         0x2'a04d   0x80  Code  Lc  nrf_ble_gatt.o [5]
+detection_delay_timeout_handler
+                           0x2'9693   0x48  Code  Lc  app_button.o [8]
+dropped_sat16_get          0x2'72d7   0x12  Code  Lc  nrf_log_frontend.o [9]
+drv_rtc_compare_disable
+                           0x2'aacb    0xa  Code  Gb  drv_rtc.o [8]
+drv_rtc_compare_pending
+                           0x2'aad5    0xa  Code  Gb  drv_rtc.o [8]
+drv_rtc_compare_set        0x2'a95f   0x44  Code  Gb  drv_rtc.o [8]
+drv_rtc_counter_get        0x2'aadf    0x8  Code  Gb  drv_rtc.o [8]
+drv_rtc_init               0x2'a8bd   0x8e  Code  Gb  drv_rtc.o [8]
+drv_rtc_irq_trigger        0x2'aae7   0x1a  Code  Gb  drv_rtc.o [8]
+drv_rtc_overflow_enable
+                           0x2'aabf    0x6  Code  Gb  drv_rtc.o [8]
+drv_rtc_overflow_pending
+                           0x2'aac5    0x6  Code  Gb  drv_rtc.o [8]
+drv_rtc_start              0x2'a94d    0x8  Code  Gb  drv_rtc.o [8]
+drv_rtc_stop               0x2'a955    0xa  Code  Gb  drv_rtc.o [8]
+drv_rtc_windowed_compare_set
+                           0x2'a9e7   0xd8  Code  Gb  drv_rtc.o [8]
+evt_disable                0x2'a9bb   0x16  Code  Lc  drv_rtc.o [8]
+evt_enable                 0x2'a9a3   0x18  Code  Lc  drv_rtc.o [8]
+evt_handle                 0x2'95c5   0xbc  Code  Gb  app_button.o [8]
+evt_pending                0x2'a9d1   0x16  Code  Lc  drv_rtc.o [8]
+exit                       0x2'c19b    0x4  Code  Gb  exit.o [12]
+flag_toggle                0x2'b7f3    0xc  Code  Lc  ble_conn_state.o [5]
+get_now                    0x2'9929   0x2e  Code  Lc  app_timer2.o [8]
+gpiote_event_handler       0x2'96db   0x32  Code  Lc  app_button.o [8]
+instance_get               0x2'a2c1   0x12  Code  Lc  ble_conn_params.o [5]
+invalid_packets_omit       0x2'72a3   0x34  Code  Lc  nrf_log_frontend.o [9]
+is_conn_params_ok          0x2'a2d3   0x44  Code  Lc  ble_conn_params.o [5]
+isalpha                    0x2'b0f9   0x14  Code  Gb  isalpha.o [12]
+ispunct                    0x2'b10d   0x14  Code  Gb  ispunct.o [12]
+led_write_handler          0x2'8f59   0x36  Code  Lc  main.o [1]
+link_init                  0x2'a039   0x14  Code  Lc  nrf_ble_gatt.o [5]
+log_backend_cb_uart_log_backend
+                        0x2000'23f4    0x8  Data  Lc  nrf_log_default_backends.o [9]
+log_const_data$$Base       0x2'bda0          --   Gb  - Linker created -
+log_const_data$$Limit      0x2'be18          --   Gb  - Linker created -
+log_dynamic_data$$Base          0x0          --   Gb  - Linker created -
+log_mempool                0x2'c40c   0x14  Data  Gb  nrf_log_frontend.o [9]
+log_mempool_nrf_balloc_cb
+                        0x2000'2cc0    0x8  Data  Lc  nrf_log_frontend.o [9]
+log_mempool_nrf_balloc_pool_mem
+                        0x2000'28a0   0xc0  Data  Lc  nrf_log_frontend.o [9]
+log_mempool_nrf_balloc_pool_stack
+                        0x2000'2cb8    0x8  Data  Lc  nrf_log_frontend.o [9]
+m_adv_data              0x2000'23a0   0x10  Data  Lc  main.o [1]
+m_adv_handle            0x2000'23b0    0x1  Data  Lc  main.o [1]
+m_app_timer_sortlist       0x2'9c14    0xc  Data  Lc  app_timer2.o [8]
+m_app_timer_sortlist_sortlist_cb
+                        0x2000'2cd8    0x4  Data  Lc  app_timer2.o [8]
+m_async_mode            0x2000'23dd    0x1  Data  Lc  nrf_log_backend_uart.o [9]
+m_base_counter          0x2000'2300    0x8  Data  Lc  app_timer2.o [8]
+m_bcs                   0x2000'29e0   0x7c  Data  Lc  ble_conn_state.o [5]
+m_ble_evt_observer         0x2'c5c8    0x8  Data  Lc  ble_conn_state.o [5]
+m_ble_observer             0x2'c4b0    0x8  Data  Lc  ble_conn_params.o [5]
+m_board_btn_list           0x2'9460    0x4  Data  Lc  boards.o [2]
+m_board_led_list           0x2'945c    0x4  Data  Lc  boards.o [2]
+m_button_count          0x2000'2ad0    0x1  Data  Lc  app_button.o [8]
+m_cb                    0x2000'2cac    0x8  Data  Lc  drv_rtc.o [8]
+m_cb                    0x2000'2a5c   0x6c  Data  Lc  nrfx_gpiote.o [7]
+m_cb                    0x2000'2ba0   0x2c  Data  Lc  nrfx_uart.o [7]
+m_cb                    0x2000'2bcc   0x24  Data  Lc  nrfx_uarte.o [7]
+m_clock_cb              0x2000'2c64   0x14  Data  Lc  nrf_drv_clock.o [7]
+m_clock_cb              0x2000'2cc8    0x8  Data  Lc  nrfx_clock.o [7]
+m_colors                0x2000'2410   0x24  Data  Lc  nrf_log_str_formatter.o [9]
+m_conn_handle           0x2000'23b2    0x2  Data  Lc  main.o [1]
+m_conn_params_config    0x2000'2c30   0x1c  Data  Lc  ble_conn_params.o [5]
+m_conn_params_instances
+                        0x2000'2b28   0x14  Data  Lc  ble_conn_params.o [5]
+m_contexts              0x2000'2c84    0x8  Data  Lc  nrf_drv_uart.o [7]
+m_detection_delay       0x2000'2ad8    0x4  Data  Lc  app_button.o [8]
+m_detection_delay_timer_id
+                           0x2'97e8    0x4  Data  Lc  app_button.o [8]
+m_detection_delay_timer_id_data
+                        0x2000'2b00   0x20  Data  Lc  app_button.o [8]
+m_enc_advdata           0x2000'2bf0   0x20  Data  Lc  main.o [1]
+m_enc_scan_response_data
+                        0x2000'2c10   0x20  Data  Lc  main.o [1]
+m_gatt                  0x2000'23b4   0x14  Data  Lc  main.o [1]
+m_gatt_obs                 0x2'c4b8    0x8  Data  Lc  main.o [1]
+m_global_active         0x2000'2310    0x1  Data  Lc  app_timer2.o [8]
+m_handlers              0x2000'2cb4    0x4  Data  Lc  drv_rtc.o [8]
+m_handlers              0x2000'2c7c    0x8  Data  Lc  nrf_drv_uart.o [7]
+m_handlers_iter         0x2000'2c8c    0xc  Data  Lc  nrf_pwr_mgmt.o [8]
+m_lbs                   0x2000'2388   0x18  Data  Lc  main.o [1]
+m_lbs_obs                  0x2'c4c0    0x8  Data  Lc  main.o [1]
+m_log_data              0x2000'2480  0x420  Data  Lc  nrf_log_frontend.o [9]
+m_log_push_ringbuf         0x2'7784    0xc  Data  Lc  nrf_log_frontend.o [9]
+m_log_push_ringbuf_buf  0x2000'2960   0x80  Data  Lc  nrf_log_frontend.o [9]
+m_log_push_ringbuf_cb   0x2000'2c4c   0x18  Data  Lc  nrf_log_frontend.o [9]
+m_nrf_log_CLOCK_logs_data_const
+                           0x2'bdf0    0x8  Data  Gb  nrfx_clock.o [7]
+m_nrf_log_GPIOTE_logs_data_const
+                           0x2'bdf8    0x8  Data  Gb  nrfx_gpiote.o [7]
+m_nrf_log_PRS_logs_data_const
+                           0x2'be00    0x8  Data  Gb  nrfx_prs.o [7]
+m_nrf_log_UARTE_logs_data_const
+                           0x2'be10    0x8  Data  Gb  nrfx_uarte.o [7]
+m_nrf_log_UART_logs_data_const
+                           0x2'be08    0x8  Data  Gb  nrfx_uart.o [7]
+m_nrf_log_app_button_logs_data_const
+                           0x2'bda0    0x8  Data  Gb  app_button.o [8]
+m_nrf_log_app_logs_data_const
+                           0x2'bdc0    0x8  Data  Gb  nrf_log_frontend.o [9]
+m_nrf_log_app_timer_logs_data_const
+                           0x2'bda8    0x8  Data  Gb  app_timer2.o [8]
+m_nrf_log_clock_logs_data_const
+                           0x2'bdb8    0x8  Data  Gb  nrf_drv_clock.o [7]
+m_nrf_log_nrf_ble_gatt_logs_data_const
+                           0x2'bdb0    0x8  Data  Gb  nrf_ble_gatt.o [5]
+m_nrf_log_nrf_sdh_ble_logs_data_const
+                           0x2'bdd8    0x8  Data  Gb  nrf_sdh_ble.o [11]
+m_nrf_log_nrf_sdh_logs_data_const
+                           0x2'bdd0    0x8  Data  Gb  nrf_sdh.o [11]
+m_nrf_log_nrf_sdh_soc_logs_data_const
+                           0x2'bde0    0x8  Data  Gb  nrf_sdh_soc.o [11]
+m_nrf_log_pwr_mgmt_logs_data_const
+                           0x2'bdc8    0x8  Data  Gb  nrf_pwr_mgmt.o [8]
+m_nrf_log_sortlist_logs_data_const
+                           0x2'bde8    0x8  Data  Gb  nrf_sortlist.o [8]
+m_nrf_sdh_ble_evts_poll
+                           0x2'c4d0    0x8  Data  Lc  nrf_sdh_ble.o [11]
+m_nrf_sdh_continue      0x2000'2cde    0x1  Data  Lc  nrf_sdh.o [11]
+m_nrf_sdh_enabled       0x2000'2cdc    0x1  Data  Lc  nrf_sdh.o [11]
+m_nrf_sdh_soc_evts_poll
+                           0x2'c4d8    0x8  Data  Lc  nrf_sdh_soc.o [11]
+m_nrf_sdh_suspended     0x2000'2cdd    0x1  Data  Lc  nrf_sdh.o [11]
+m_pin_active            0x2000'2ac8    0x8  Data  Lc  app_button.o [8]
+m_pin_states            0x2000'2adc   0x20  Data  Lc  app_button.o [8]
+m_preferred_conn_params
+                        0x2000'2b20    0x8  Data  Lc  ble_conn_params.o [5]
+m_prs_box_4             0x2000'2cd0    0x8  Data  Lc  nrfx_prs.o [7]
+m_pwr_mgmt_evt          0x2000'2c98    0x1  Data  Lc  nrf_pwr_mgmt.o [8]
+m_qwr                   0x2000'23c8    0xc  Data  Lc  main.o [1]
+m_qwr_obs                  0x2'c4c8    0x8  Data  Lc  main.o [1]
+m_req_fifo_data         0x2000'2320   0x58  Data  Lc  app_timer2.o [8]
+m_req_fifo_inst         0x2000'2378   0x10  Data  Lc  app_timer2.o [8]
+m_rtc_inst              0x2000'2318    0x8  Data  Lc  app_timer2.o [8]
+m_sd_state_observer        0x2'c5e0    0x8  Data  Lc  nrf_drv_clock.o [7]
+m_shutdown_started      0x2000'2c99    0x1  Data  Lc  nrf_pwr_mgmt.o [8]
+m_soc_evt_observer         0x2'c5d8    0x8  Data  Lc  nrf_drv_clock.o [7]
+m_stack_is_enabled      0x2000'2cdf    0x1  Data  Lc  nrf_sdh_ble.o [11]
+m_stamp64               0x2000'2308    0x8  Data  Lc  app_timer2.o [8]
+m_string_buff           0x2000'2b60   0x40  Data  Lc  nrf_log_backend_uart.o [9]
+m_sysoff_mtx            0x2000'2c9c    0x4  Data  Lc  nrf_pwr_mgmt.o [8]
+m_timer_data            0x2000'2b40   0x20  Data  Lc  ble_conn_params.o [5]
+m_uart                  0x2000'23e0   0x14  Data  Gb  nrf_log_backend_uart.o [9]
+m_unknown_str              0x2'ad28   0x14  Data  Lc  nrf_strerror.o [8]
+m_xfer_done             0x2000'23dc    0x1  Data  Lc  nrf_log_backend_uart.o [9]
+main                       0x2'90c1  0x1d4  Code  Gb  main.o [1]
+memobj_op                  0x2'784b   0x86  Code  Lc  nrf_memobj.o [8]
+module_idx_get             0x2'722f   0x2e  Code  Lc  nrf_log_frontend.o [9]
+mp_active_timer         0x2000'2314    0x4  Data  Lc  app_timer2.o [8]
+mp_buttons              0x2000'2ad4    0x4  Data  Lc  app_button.o [8]
+nrf_atfifo_init            0x2'ab95   0x28  Code  Gb  nrf_atfifo.o [8]
+nrf_atfifo_item_alloc      0x2'abbd   0x44  Code  Gb  nrf_atfifo.o [8]
+nrf_atfifo_item_free       0x2'ac79   0x20  Code  Gb  nrf_atfifo.o [8]
+nrf_atfifo_item_get        0x2'ac21   0x46  Code  Gb  nrf_atfifo.o [8]
+nrf_atfifo_item_put        0x2'ac01   0x20  Code  Gb  nrf_atfifo.o [8]
+nrf_atflags_clear          0x2'b909   0x16  Code  Gb  nrf_atflags.o [8]
+nrf_atflags_get            0x2'b91f   0x12  Code  Gb  nrf_atflags.o [8]
+nrf_atflags_set            0x2'b8f5   0x14  Code  Gb  nrf_atflags.o [8]
+nrf_atomic_flag_clear_fetch
+                           0x2'7a05    0x4  Code  Gb  nrf_atomic.o [8]
+nrf_atomic_flag_set        0x2'7a01    0x4  Code  Gb  nrf_atomic.o [8]
+nrf_atomic_u32_add         0x2'79d1   0x18  Code  Gb  nrf_atomic.o [8]
+nrf_atomic_u32_and         0x2'79b9   0x18  Code  Gb  nrf_atomic.o [8]
+nrf_atomic_u32_fetch_and
+                           0x2'79a1   0x18  Code  Gb  nrf_atomic.o [8]
+nrf_atomic_u32_fetch_store
+                           0x2'7971   0x16  Code  Gb  nrf_atomic.o [8]
+nrf_atomic_u32_or          0x2'7989   0x18  Code  Gb  nrf_atomic.o [8]
+nrf_atomic_u32_sub         0x2'79e9   0x18  Code  Gb  nrf_atomic.o [8]
+nrf_balloc_alloc           0x2'7aa7   0x46  Code  Gb  nrf_balloc.o [8]
+nrf_balloc_free            0x2'7aed   0x30  Code  Gb  nrf_balloc.o [8]
+nrf_balloc_init            0x2'7a79   0x2e  Code  Gb  nrf_balloc.o [8]
+nrf_bitmask_bit_is_set     0x2'7c51   0x12  Code  Lc  nrfx_gpiote.o [7]
+nrf_ble_gatt_init          0x2'a0cd   0x1e  Code  Gb  nrf_ble_gatt.o [5]
+nrf_ble_gatt_on_ble_evt
+                           0x2'a0ed  0x186  Code  Gb  nrf_ble_gatt.o [5]
+nrf_ble_qwr_conn_handle_assign
+                           0x2'948d   0x16  Code  Gb  nrf_ble_qwr.o [5]
+nrf_ble_qwr_init           0x2'9465   0x28  Code  Gb  nrf_ble_qwr.o [5]
+nrf_ble_qwr_on_ble_evt     0x2'94c1   0xa4  Code  Gb  nrf_ble_qwr.o [5]
+nrf_clock_event_clear      0x2'bb71   0x14  Code  Lc  nrfx_clock.o [7]
+nrf_drv_clock_init         0x2'ba59   0x3c  Code  Gb  nrf_drv_clock.o [7]
+nrf_drv_clock_lfclk_release
+                           0x2'ba95   0x26  Code  Gb  nrf_drv_clock.o [7]
+nrf_drv_uart_init          0x2'ad69   0x52  Code  Gb  nrf_drv_uart.o [7]
+nrf_drv_uart_use_easy_dma
+                        0x2000'2c78    0x2  Data  Gb  nrf_drv_uart.o [7]
+nrf_fprintf                0x2'b0d1   0x22  Code  Gb  nrf_fprintf.o [8]
+nrf_fprintf_buffer_flush
+                           0x2'b0b9   0x16  Code  Gb  nrf_fprintf.o [8]
+nrf_fprintf_fmt            0x2'b1ef  0x228  Code  Gb  nrf_fprintf_format.o [8]
+nrf_gpio_cfg               0x2'938b   0x34  Code  Lc  boards.o [2]
+nrf_gpio_cfg               0x2'7b7d   0x34  Code  Lc  nrfx_gpiote.o [7]
+nrf_gpio_cfg               0x2'8133   0x34  Code  Lc  nrfx_uart.o [7]
+nrf_gpio_cfg               0x2'869d   0x34  Code  Lc  nrfx_uarte.o [7]
+nrf_gpio_cfg_default       0x2'8183    0x8  Code  Lc  nrfx_uart.o [7]
+nrf_gpio_cfg_default       0x2'86ed    0x8  Code  Lc  nrfx_uarte.o [7]
+nrf_gpio_cfg_input         0x2'8171    0xc  Code  Lc  nrfx_uart.o [7]
+nrf_gpio_cfg_input         0x2'86db    0xc  Code  Lc  nrfx_uarte.o [7]
+nrf_gpio_cfg_output        0x2'8167    0xa  Code  Lc  nrfx_uart.o [7]
+nrf_gpio_cfg_output        0x2'86d1    0xa  Code  Lc  nrfx_uarte.o [7]
+nrf_gpio_cfg_sense_set     0x2'7bb1   0x30  Code  Lc  nrfx_gpiote.o [7]
+nrf_gpio_latches_read_and_clear
+                           0x2'7c03   0x2c  Code  Lc  nrfx_gpiote.o [7]
+nrf_gpio_pin_port_decode
+                           0x2'9375   0x16  Code  Lc  boards.o [2]
+nrf_gpio_pin_port_decode
+                           0x2'7b65   0x18  Code  Lc  nrfx_gpiote.o [7]
+nrf_gpio_pin_port_decode
+                           0x2'811b   0x18  Code  Lc  nrfx_uart.o [7]
+nrf_gpio_pin_port_decode
+                           0x2'8685   0x18  Code  Lc  nrfx_uarte.o [7]
+nrf_gpio_pin_present_check
+                           0x2'7c2f   0x22  Code  Lc  nrfx_gpiote.o [7]
+nrf_gpio_pin_read          0x2'7bed   0x16  Code  Lc  nrfx_gpiote.o [7]
+nrf_gpio_pin_set           0x2'8197   0x14  Code  Lc  nrfx_uart.o [7]
+nrf_gpio_pin_set           0x2'8701   0x14  Code  Lc  nrfx_uarte.o [7]
+nrf_gpio_pin_write         0x2'93bf   0x28  Code  Lc  boards.o [2]
+nrf_gpiote_event_addr_get
+                           0x2'7b63    0x2  Code  Lc  nrfx_gpiote.o [7]
+nrf_gpiote_event_clear     0x2'7b47   0x1c  Code  Lc  nrfx_gpiote.o [7]
+nrf_gpiote_event_is_set
+                           0x2'7b35   0x12  Code  Lc  nrfx_gpiote.o [7]
+nrf_log_backend_add        0x2'76d7   0x52  Code  Gb  nrf_log_frontend.o [9]
+nrf_log_backend_serial_put
+                           0x2'adc9   0xcc  Code  Gb  nrf_log_backend_serial.o [9]
+nrf_log_backend_uart_api
+                           0x2'c4f8    0xc  Data  Gb  nrf_log_backend_uart.o [9]
+nrf_log_backend_uart_flush
+                           0x2'a825    0x2  Code  Lc  nrf_log_backend_uart.o [9]
+nrf_log_backend_uart_init
+                           0x2'a7db    0x4  Code  Gb  nrf_log_backend_uart.o [9]
+nrf_log_backend_uart_panic_set
+                           0x2'a827   0x26  Code  Lc  nrf_log_backend_uart.o [9]
+nrf_log_backend_uart_put
+                           0x2'a815   0x10  Code  Lc  nrf_log_backend_uart.o [9]
+nrf_log_color_id_get       0x2'7279   0x2a  Code  Gb  nrf_log_frontend.o [9]
+nrf_log_default_backends_init
+                           0x2'9909   0x20  Code  Gb  nrf_log_default_backends.o [9]
+nrf_log_frontend_dequeue
+                           0x2'74bd  0x1fc  Code  Gb  nrf_log_frontend.o [9]
+nrf_log_frontend_std_0     0x2'7477    0x6  Code  Gb  nrf_log_frontend.o [9]
+nrf_log_frontend_std_1     0x2'747d    0xc  Code  Gb  nrf_log_frontend.o [9]
+nrf_log_frontend_std_2     0x2'7489   0x10  Code  Gb  nrf_log_frontend.o [9]
+nrf_log_hexdump_entry_process
+                           0x2'afb5   0xaa  Code  Gb  nrf_log_str_formatter.o [9]
+nrf_log_init               0x2'7201   0x20  Code  Gb  nrf_log_frontend.o [9]
+nrf_log_module_cnt_get     0x2'7221    0xe  Code  Gb  nrf_log_frontend.o [9]
+nrf_log_module_name_get
+                           0x2'725d   0x1a  Code  Gb  nrf_log_frontend.o [9]
+nrf_log_panic              0x2'7729   0x26  Code  Gb  nrf_log_frontend.o [9]
+nrf_log_std_entry_process
+                           0x2'af25   0x8e  Code  Gb  nrf_log_str_formatter.o [9]
+nrf_memobj_alloc           0x2'7795   0x64  Code  Gb  nrf_memobj.o [8]
+nrf_memobj_free            0x2'77f9   0x2c  Code  Gb  nrf_memobj.o [8]
+nrf_memobj_get             0x2'7825    0x8  Code  Gb  nrf_memobj.o [8]
+nrf_memobj_pool_init       0x2'7791    0x4  Code  Gb  nrf_memobj.o [8]
+nrf_memobj_put             0x2'782d   0x1e  Code  Gb  nrf_memobj.o [8]
+nrf_memobj_read            0x2'78d9    0x6  Code  Gb  nrf_memobj.o [8]
+nrf_memobj_write           0x2'78d1    0x8  Code  Gb  nrf_memobj.o [8]
+nrf_nvic_state          0x2000'2ca0    0xc  Data  Gb  app_util_platform.o [8]
+nrf_pwr_mgmt_init          0x2'9c25   0x1a  Code  Gb  nrf_pwr_mgmt.o [8]
+nrf_pwr_mgmt_run           0x2'9c3f   0x3e  Code  Gb  nrf_pwr_mgmt.o [8]
+nrf_qwr_error_handler      0x2'8f55    0x4  Code  Lc  main.o [1]
+nrf_ringbuf_init           0x2'78e9   0x12  Code  Gb  nrf_ringbuf.o [8]
+nrf_rtc_cc_set             0x2'a891    0xa  Code  Lc  drv_rtc.o [8]
+nrf_rtc_event_clear        0x2'a8a1   0x10  Code  Lc  drv_rtc.o [8]
+nrf_rtc_event_disable      0x2'a8b7    0x6  Code  Lc  drv_rtc.o [8]
+nrf_rtc_event_enable       0x2'a8b1    0x6  Code  Lc  drv_rtc.o [8]
+nrf_rtc_int_disable        0x2'a89b    0x6  Code  Lc  drv_rtc.o [8]
+nrf_sdh_ble_default_cfg_set
+                           0x2'9e3d   0xe0  Code  Gb  nrf_sdh_ble.o [11]
+nrf_sdh_ble_enable         0x2'9f35   0x74  Code  Gb  nrf_sdh_ble.o [11]
+nrf_sdh_ble_evts_poll      0x2'9fa9   0x48  Code  Lc  nrf_sdh_ble.o [11]
+nrf_sdh_enable_request     0x2'9d6d   0x52  Code  Gb  nrf_sdh.o [11]
+nrf_sdh_enable_request::clock_lf_cfg
+                           0x2'9e38    0x4  Data  Lc  nrf_sdh.o [11]
+nrf_sdh_evts_poll          0x2'9df1   0x22  Code  Gb  nrf_sdh.o [11]
+nrf_sdh_is_enabled         0x2'9dd5    0x6  Code  Gb  nrf_sdh.o [11]
+nrf_sdh_soc_evts_poll      0x2'be7d   0x36  Code  Lc  nrf_sdh_soc.o [11]
+nrf_section_iter_get       0x2'9c91    0x4  Code  Lc  nrf_sdh.o [11]
+nrf_section_iter_init      0x2'acbb    0x4  Code  Gb  nrf_section_iter.o [8]
+nrf_section_iter_item_set
+                           0x2'ac99   0x22  Code  Lc  nrf_section_iter.o [8]
+nrf_section_iter_next      0x2'acc3   0x1c  Code  Gb  nrf_section_iter.o [8]
+nrf_sortlist_add           0x2'ab49   0x22  Code  Gb  nrf_sortlist.o [8]
+nrf_sortlist_pop           0x2'ab6b    0xe  Code  Gb  nrf_sortlist.o [8]
+nrf_sortlist_remove        0x2'ab79   0x1a  Code  Gb  nrf_sortlist.o [8]
+nrf_strerror_array         0x2'b930  0x128  Data  Lc  nrf_strerror.o [8]
+nrf_strerror_find          0x2'aced   0x36  Code  Gb  nrf_strerror.o [8]
+nrf_strerror_get           0x2'ace1    0xc  Code  Gb  nrf_strerror.o [8]
+nrf_uart_event_check       0x2'80ed    0x4  Code  Lc  nrfx_uart.o [7]
+nrf_uart_event_clear       0x2'80dd   0x10  Code  Lc  nrfx_uart.o [7]
+nrf_uart_hwfc_pins_set     0x2'8109    0xa  Code  Lc  nrfx_uart.o [7]
+nrf_uart_int_enable_check
+                           0x2'80f1    0xe  Code  Lc  nrfx_uart.o [7]
+nrf_uart_rxd_get           0x2'8113    0x8  Code  Lc  nrfx_uart.o [7]
+nrf_uart_txrx_pins_set     0x2'80ff    0xa  Code  Lc  nrfx_uart.o [7]
+nrf_uarte_event_check      0x2'866d    0x4  Code  Lc  nrfx_uarte.o [7]
+nrf_uarte_event_clear      0x2'865d   0x10  Code  Lc  nrfx_uarte.o [7]
+nrf_uarte_hwfc_pins_set
+                           0x2'867b    0xa  Code  Lc  nrfx_uarte.o [7]
+nrf_uarte_txrx_pins_set
+                           0x2'8671    0xa  Code  Lc  nrfx_uarte.o [7]
+nrfx_clock_enable          0x2'bb9d   0x1a  Code  Gb  nrfx_clock.o [7]
+nrfx_clock_init            0x2'bb85   0x18  Code  Gb  nrfx_clock.o [7]
+nrfx_clock_lfclk_stop      0x2'bbb7   0x1c  Code  Gb  nrfx_clock.o [7]
+nrfx_coredep_delay_us      0x2'a881   0x10  Code  Lc  drv_rtc.o [8]
+nrfx_coredep_delay_us::delay_machine_code
+                           0x2'ab40    0x8  Data  Lc  drv_rtc.o [8]
+nrfx_gpiote_in_event_disable
+                           0x2'7ee3   0x3e  Code  Gb  nrfx_gpiote.o [7]
+nrfx_gpiote_in_event_enable
+                           0x2'7e63   0x80  Code  Gb  nrfx_gpiote.o [7]
+nrfx_gpiote_in_init        0x2'7da7   0xbc  Code  Gb  nrfx_gpiote.o [7]
+nrfx_gpiote_in_is_set      0x2'7f21    0x6  Code  Gb  nrfx_gpiote.o [7]
+nrfx_gpiote_init           0x2'7d1d   0x72  Code  Gb  nrfx_gpiote.o [7]
+nrfx_gpiote_is_init        0x2'7d8f    0xe  Code  Gb  nrfx_gpiote.o [7]
+nrfx_prs_acquire           0x2'860b   0x38  Code  Gb  nrfx_prs.o [7]
+nrfx_prs_release           0x2'8643   0x10  Code  Gb  nrfx_prs.o [7]
+nrfx_uart_0_irq_handler
+                           0x2'84b5  0x114  Code  Gb  nrfx_uart.o [7]
+nrfx_uart_init             0x2'81ad  0x120  Code  Gb  nrfx_uart.o [7]
+nrfx_uart_init::irq_handlers
+                           0x2'8600    0x4  Data  Lc  nrfx_uart.o [7]
+nrfx_uart_tx               0x2'839d   0x98  Code  Gb  nrfx_uart.o [7]
+nrfx_uart_tx_in_progress
+                           0x2'8435    0xc  Code  Gb  nrfx_uart.o [7]
+nrfx_uart_uninit           0x2'82cd   0xb0  Code  Gb  nrfx_uart.o [7]
+nrfx_uarte_0_irq_handler
+                           0x2'8a2d   0xec  Code  Gb  nrfx_uarte.o [7]
+nrfx_uarte_init            0x2'8715  0x136  Code  Gb  nrfx_uarte.o [7]
+nrfx_uarte_init::irq_handlers
+                           0x2'8b48    0x4  Data  Lc  nrfx_uarte.o [7]
+nrfx_uarte_tx              0x2'8949   0x8a  Code  Gb  nrfx_uarte.o [7]
+nrfx_uarte_tx_in_progress
+                           0x2'89db    0xc  Code  Gb  nrfx_uarte.o [7]
+nrfx_uarte_uninit          0x2'884b   0xfe  Code  Gb  nrfx_uarte.o [7]
+on_conn_params_evt         0x2'8f8f   0x16  Code  Lc  main.o [1]
+pin_configured_set         0x2'7c9b    0xa  Code  Lc  nrfx_gpiote.o [7]
+pin_in_use_by_gpiote       0x2'7c8b   0x10  Code  Lc  nrfx_gpiote.o [7]
+pin_in_use_by_port         0x2'7c75   0x16  Code  Lc  nrfx_gpiote.o [7]
+pin_in_use_by_te           0x2'7c63   0x12  Code  Lc  nrfx_gpiote.o [7]
+postfix_process            0x2'aef5   0x30  Code  Lc  nrf_log_str_formatter.o [9]
+prefix_process             0x2'ae95   0x60  Code  Lc  nrf_log_str_formatter.o [9]
+pwr_mgmt_data              0x2'9c84    0xc  Data  Lc  nrf_pwr_mgmt.o [8]
+pwr_mgmt_data0$$Base            0x0          --   Gb  - Linker created -
+pwr_mgmt_data0$$Limit           0x0          --   Gb  - Linker created -
+pwr_mgmt_data1$$Base            0x0          --   Gb  - Linker created -
+pwr_mgmt_data1$$Limit           0x0          --   Gb  - Linker created -
+pwr_mgmt_data2$$Base            0x0          --   Gb  - Linker created -
+pwr_mgmt_data2$$Limit           0x0          --   Gb  - Linker created -
+pwr_mgmt_data_array        0x2'c27c   0x18  Data  Lc  nrf_pwr_mgmt.o [8]
+rtc_irq                    0x2'99d7  0x154  Code  Lc  app_timer2.o [8]
+rx_byte                    0x2'8449   0x36  Code  Lc  nrfx_uart.o [7]
+rx_done_event              0x2'847f   0x18  Code  Lc  nrfx_uart.o [7]
+rx_done_event              0x2'89ef   0x18  Code  Lc  nrfx_uarte.o [7]
+sd_state_evt_handler       0x2'bb19   0x4a  Code  Lc  nrf_drv_clock.o [7]
+sdh_ble_observers          0x2'a02c    0xc  Data  Lc  nrf_sdh_ble.o [11]
+sdh_ble_observers0$$Base
+                           0x2'c5c8          --   Gb  - Linker created -
+sdh_ble_observers0$$Limit
+                           0x2'c5d0          --   Gb  - Linker created -
+sdh_ble_observers1$$Base
+                           0x2'c4b0          --   Gb  - Linker created -
+sdh_ble_observers1$$Limit
+                           0x2'c4c0          --   Gb  - Linker created -
+sdh_ble_observers2$$Base
+                           0x2'c4c0          --   Gb  - Linker created -
+sdh_ble_observers2$$Limit
+                           0x2'c4d0          --   Gb  - Linker created -
+sdh_ble_observers3$$Base
+                           0x2'c5d0          --   Gb  - Linker created -
+sdh_ble_observers3$$Limit
+                           0x2'c5d8          --   Gb  - Linker created -
+sdh_ble_observers_array
+                           0x2'c0bc   0x20  Data  Lc  nrf_sdh_ble.o [11]
+sdh_req_observers          0x2'9e14    0xc  Data  Lc  nrf_sdh.o [11]
+sdh_req_observers0$$Base
+                                0x0          --   Gb  - Linker created -
+sdh_req_observers0$$Limit
+                                0x0          --   Gb  - Linker created -
+sdh_req_observers1$$Base
+                                0x0          --   Gb  - Linker created -
+sdh_req_observers1$$Limit
+                                0x0          --   Gb  - Linker created -
+sdh_req_observers_array
+                           0x2'c430   0x10  Data  Lc  nrf_sdh.o [11]
+sdh_request_observer_notify
+                           0x2'9cc1   0x32  Code  Lc  nrf_sdh.o [11]
+sdh_soc_observers          0x2'beb4    0xc  Data  Lc  nrf_sdh_soc.o [11]
+sdh_soc_observers0$$Base
+                           0x2'c5d8          --   Gb  - Linker created -
+sdh_soc_observers0$$Limit
+                           0x2'c5e0          --   Gb  - Linker created -
+sdh_soc_observers1$$Base
+                                0x0          --   Gb  - Linker created -
+sdh_soc_observers1$$Limit
+                                0x0          --   Gb  - Linker created -
+sdh_soc_observers_array
+                           0x2'c460   0x10  Data  Lc  nrf_sdh_soc.o [11]
+sdh_stack_observers        0x2'9e2c    0xc  Data  Lc  nrf_sdh.o [11]
+sdh_stack_observers0$$Base
+                           0x2'c4d0          --   Gb  - Linker created -
+sdh_stack_observers0$$Limit
+                           0x2'c4e0          --   Gb  - Linker created -
+sdh_stack_observers1$$Base
+                                0x0          --   Gb  - Linker created -
+sdh_stack_observers1$$Limit
+                                0x0          --   Gb  - Linker created -
+sdh_stack_observers_array
+                           0x2'c450   0x10  Data  Lc  nrf_sdh.o [11]
+sdh_state_observer_notify
+                           0x2'9cf5   0x2c  Code  Lc  nrf_sdh.o [11]
+sdh_state_observers        0x2'9e20    0xc  Data  Lc  nrf_sdh.o [11]
+sdh_state_observers0$$Base
+                           0x2'c5e0          --   Gb  - Linker created -
+sdh_state_observers0$$Limit
+                           0x2'c5e8          --   Gb  - Linker created -
+sdh_state_observers1$$Base
+                                0x0          --   Gb  - Linker created -
+sdh_state_observers1$$Limit
+                                0x0          --   Gb  - Linker created -
+sdh_state_observers_array
+                           0x2'c440   0x10  Data  Lc  nrf_sdh.o [11]
+send_error_evt             0x2'a317    0xc  Code  Lc  ble_conn_params.o [5]
+serial_tx                  0x2'a7df   0x36  Code  Lc  nrf_log_backend_uart.o [9]
+set_security_req           0x2'a5b5   0x2c  Code  Lc  ble_srv_common.o [5]
+severity_names          0x2000'23fc   0x14  Data  Lc  nrf_log_str_formatter.o [9]
+soc_evt_handler            0x2'bb0d    0xc  Code  Lc  nrf_drv_clock.o [7]
+softdevices_evt_irq_enable
+                           0x2'9d25   0x48  Code  Lc  nrf_sdh.o [11]
+sortlist_pop               0x2'99d1    0x6  Code  Lc  app_timer2.o [8]
+state_set                  0x2'9565   0x1c  Code  Lc  app_button.o [8]
+std_n                      0x2'73f7   0x80  Code  Lc  nrf_log_frontend.o [9]
+timer_expire               0x2'9971   0x60  Code  Lc  app_timer2.o [8]
+timer_req_schedule         0x2'9b35   0x34  Code  Lc  app_timer2.o [8]
+timer_start                0x2'9685    0xe  Code  Lc  app_button.o [8]
+tx_byte                    0x2'837d   0x20  Code  Lc  nrfx_uart.o [7]
+tx_done_event              0x2'8497   0x1e  Code  Lc  nrfx_uart.o [7]
+tx_done_event              0x2'8a07   0x1e  Code  Lc  nrfx_uarte.o [7]
+uart_evt_handler           0x2'ad41    0x2  Code  Lc  nrf_drv_uart.o [7]
+uart_evt_handler           0x2'a791    0x8  Code  Lc  nrf_log_backend_uart.o [9]
+uart_init                  0x2'a799   0x42  Code  Lc  nrf_log_backend_uart.o [9]
+uart_log_backend           0x2'c4a0   0x10  Data  Lc  nrf_log_default_backends.o [9]
+uarte_evt_handler          0x2'ad3d    0x4  Code  Lc  nrf_drv_uart.o [7]
+uint16_decode              0x2'a599    0xc  Code  Lc  ble_srv_common.o [5]
+uint16_encode              0x2'8b4d    0xa  Code  Lc  ble_advdata.o [5]
+unsigned_print             0x2'b14d   0xa2  Code  Lc  nrf_fprintf_format.o [8]
+unsigned_print::_aV2C      0x2'b42c   0x10  Data  Lc  nrf_fprintf_format.o [8]
+update_timeout_handler     0x2'a323   0x60  Code  Lc  ble_conn_params.o [5]
+user_mem_reply             0x2'94a3   0x1e  Code  Lc  nrf_ble_qwr.o [5]
+usr_event                  0x2'95a5   0x20  Code  Lc  app_button.o [8]
+uuid_list_encode           0x2'8bf3   0x2e  Code  Lc  ble_advdata.o [5]
+uuid_list_sized_encode     0x2'8b57   0x9c  Code  Lc  ble_advdata.o [5]
+
+
+[1] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\Application
+[2] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\Board Definition
+[3] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\None
+[4] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\UTF8\UTF16 converter
+[5] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE
+[6] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_BLE_Services
+[7] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Drivers
+[8] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Libraries
+[9] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Log
+[10] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_Segger_RTT
+[11] = D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_blinky\pca10056\s140\iar\_build\nRF_SoftDevice
+[12] = dl7M_tlf.a
+[13] = m7M_tls.a
+[14] = rt7M_tl.a
+
+  19'190 bytes of readonly  code memory
+   3'016 bytes of readonly  data memory
+  10'720 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
