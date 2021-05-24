@@ -105,6 +105,7 @@
 
 
 NRF_BLE_GATT_DEF(m_gatt);                                                       /**< GATT module instance. */
+BLE_WS2812B_DEF(m_ws2812bService);                                              /**< ws2812b Service instance. */
 NRF_BLE_QWR_DEF(m_qwr);                                                         /**< Context for the Queued Write module.*/
 BLE_ADVERTISING_DEF(m_advertising);                                             /**< Advertising module instance. */
 
@@ -268,7 +269,7 @@ static void on_yys_evt(ble_yy_service_t     * p_yy_service,
 
 /**@brief Function for initializing services that will be used by the application.
  */
-static void services_init(void)
+static void services_init( void )
 {
     ret_code_t         err_code;
     nrf_ble_qwr_init_t qwr_init = {0};
@@ -278,6 +279,21 @@ static void services_init(void)
 
     err_code = nrf_ble_qwr_init(&m_qwr, &qwr_init);
     APP_ERROR_CHECK(err_code);
+    
+   // Initialize LBS.
+   //init.led_write_handler = led_write_handler;
+   
+   //err_code = ble_lbs_init(&m_lbs, &init);
+   APP_ERROR_CHECK(err_code);
+   
+   // rdm
+   ble_uvstart_init_t initUvService = {0};
+   
+   // Initialize LBS.
+   initUvService.ws2812b_evt_handler = ws2812b_evt_handler;
+
+   err_code = bleapp_services_uvInit(&m_uvService, &initUvService);
+   APP_ERROR_CHECK(err_code);
 
     /* YOUR_JOB: Add code to initialize the services used by the application.
        ble_xxs_init_t                     xxs_init;

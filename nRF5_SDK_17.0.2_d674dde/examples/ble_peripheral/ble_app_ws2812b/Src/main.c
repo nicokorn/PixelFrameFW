@@ -77,6 +77,7 @@ int main(void)
 
    WS2812B_init();
    bleapp_init();
+   
 
    // Enter main loop.
    for (;;)

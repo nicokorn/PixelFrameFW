@@ -41,8 +41,8 @@
  * @param   _name   Name of the instance.
  * @hideinitializer
  */
-#define BLE_UV_DEF(_name)                          \
-static ble_ws2812b_service_t _name;                     \
+#define BLE_WS2812B_DEF(_name)                     \
+static ble_ws2812b_service_t _name;                \
 NRF_SDH_BLE_OBSERVER(_name ## _obs,                \
                      BLE_LBS_BLE_OBSERVER_PRIO,    \
                      bleapp_services_ws2812b_evt, &_name)
@@ -69,13 +69,13 @@ void bleapp_services_init ( void );
 // Forward declaration of the ble_lbs_t type.
 typedef struct ble_ws2812b_service_s ble_ws2812b_service_t;
 
-typedef void (*ble_ws2812b_write_handler_t) (uint16_t conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t new_state);
+typedef void (*ble_ws2812b_evt_handler_t) (uint16_t conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t new_state);
 
 /** @brief LED Button Service init structure. This structure contains all options and data needed for
  *        initialization of the service.*/
 typedef struct
 {
-    ble_ws2812b_write_handler_t uvstart_write_handler; /**< Event handler to be called when the LED Characteristic is written. */
+    ble_ws2812b_evt_handler_t ws2812b_evt_handler; /**< Event handler when Characteristic is written. */
 } ble_ws2812b_init_t;
 
 /**@brief UV Service structure. This structure contains various status information for the uv service. */
@@ -88,7 +88,7 @@ struct ble_ws2812b_service_s
    ble_gatts_char_handles_t      pixel_char_handles;     /**< Handles related to column Characteristic. */
    ble_gatts_char_handles_t      picture_char_handles;   /**< Handles related to data Characteristic. */
    uint8_t                       uuid_type;              /**< UUID type for the ws2812b controller Service. */
-   ble_ws2812b_write_handler_t   uvstart_write_handler;  /**< Event handler to be called when the UV LED Characteristic is written. */
+   ble_ws2812b_evt_handler_t     ws2812b_evt_handler;    /**< Event handler to be called when ws2812b characteristics are written. */
 };
 
 
