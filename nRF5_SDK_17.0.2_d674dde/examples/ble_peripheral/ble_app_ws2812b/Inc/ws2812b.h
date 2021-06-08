@@ -49,15 +49,15 @@
 #include "nrf.h"
 
 // Exported defines ***********************************************************
+#define PIXEL_COUNTMAX           ( 1024u )
+
 //#define ONBOARD_LED   // used if a ws2812b led stripe is attached to GPIO Port 0, Pin 16
 #define STRIPE_LED   // used if a ws2812b led stripe is attached to GPIO Port 0, Pin 4
 
 #ifdef STRIPE_LED
-#define PIXEL_COUNT              ( 18u )
+#define PIXEL_COUNT              ( 225u )
 #define WS2812B_PIN              ( 4u )
 #define WS2812B_PORT             ( 0u )
-#define COLS                     PIXEL_COUNT
-#define ROWS                     ( 1u )
 #endif
 
 #ifdef ONBOARD_LED
@@ -77,9 +77,16 @@ typedef enum
    WS2812B_RESET    = 0x05U
 } WS2812B_StatusTypeDef;
 
+typedef struct WS2812B_HandleTypeDef_s
+{
+   uint16_t                pixelcount;
+   uint8_t*                pixelbuffer;
+   WS2812B_StatusTypeDef   state;
+}WS2812B_HandleTypeDef_t;
+
 // Exported functions *********************************************************
-WS2812B_StatusTypeDef   WS2812B_init            ( void );
-void                    WS2812B_sendBuffer      ( void );
-void                    WS2812B_clearBuffer     ( void );
-void                    WS2812B_setPixel        ( uint16_t pixel_pos, uint8_t red, uint8_t green, uint8_t blue );
+WS2812B_StatusTypeDef   WS2812B_init            ( WS2812B_HandleTypeDef_t *ws2812b_instance );
+void                    WS2812B_sendBuffer      ( WS2812B_HandleTypeDef_t *ws2812b_instance );
+void                    WS2812B_clearBuffer     ( WS2812B_HandleTypeDef_t *ws2812b_instance );
+void                    WS2812B_setPixel        ( WS2812B_HandleTypeDef_t *ws2812b_instance, uint16_t pixel_pos, uint8_t red, uint8_t green, uint8_t blue );
 #endif // __WS2812B_H

@@ -1,0 +1,13 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"68-24092007-650592";"";
+"REFERENCE";"DIN 653-M4-25";"";
+"TraceParts.PartTitle";"DIN 653 Flat knurled screws";"";
+"TraceParts.InstanceId";"68-24092007-6505929BXSTUZLJT1T6823KXVFX4HM1";"";
+"DESIGN";"DIN 653 Flat knurled screws";"";
+"TraceParts.PartStatus";"Published";"";
+"TraceParts.PartStatusId";"";"";
+"SUPPLIER";"GANTER";"";
+"TraceParts.PartVersion";"1.5.0";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.ClassPath";"GANTER:68-24092007-650592";"";

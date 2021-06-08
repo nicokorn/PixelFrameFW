@@ -67,7 +67,7 @@
 #include "nrf_ble_gatt.h"
 #include "nrf_ble_qwr.h"
 #include "nrf_pwr_mgmt.h"
-#include "ws2812b.h"
+#include "frame.h"
 #include "bleapp.h"
 #include "bleapp_services.h"
 #include "nrf_delay.h"
@@ -455,7 +455,7 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
             m_conn_handle = p_ble_evt->evt.gap_evt.conn_handle;
             err_code = nrf_ble_qwr_conn_handle_assign(&m_qwr, m_conn_handle);
             APP_ERROR_CHECK(err_code);
-            bleapp_serviceSetResolution((uint16_t)COLS, (uint16_t)ROWS);
+            bleapp_serviceSetResolution(frame_getRowCount(), frame_getColCount());
             break;
 
         case BLE_GAP_EVT_PHY_UPDATE_REQUEST:

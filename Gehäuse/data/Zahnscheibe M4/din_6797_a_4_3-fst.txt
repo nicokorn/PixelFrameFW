@@ -1,0 +1,15 @@
+﻿"Symbol";"Value";"Unit";
+"REFERENCE";"DIN 6797 - A d1 4.3 - FSt";"";
+"MATERIAL";"Federstahl";"";
+"TraceParts.PartStatus";"Published";"";
+"DESIGN";"Zahnscheibe DIN 6797 - A 4.3 - FSt";"";
+"TraceParts.PartNumber";"10-16072008-112086";"";
+"TraceParts.PartLanguage";"de";"";
+"STANDARD";"DIN 6797";"";
+"TraceParts.InstanceId";"10-16072008-1120869QM0XBMYJI2SE04USPOQR67C3";"";
+"TraceParts.PartTitle";"Gezahnte Sicherungsscheiben - Typ A, mit Außenverzahnung";"";
+"TraceParts.PartVersion";"1.3.3";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartStatusId";"";"";
+"TraceParts.ClassPath";"DIN:10-16072008-112086";"";
+"TraceParts.PartStandardAcronym";"DIN";"";

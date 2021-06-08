@@ -97,7 +97,7 @@ static void on_write( ble_ws2812b_service_t * p_lbs, ble_evt_t const * p_ble_evt
       uint8_t r = p_evt_write->data[4];
       uint8_t g = p_evt_write->data[5];
       uint8_t b = p_evt_write->data[6];
-      WS2812B_setPixel( col, r, g, b );
+      //WS2812B_setPixel( &ws2812b, col, r, g, b );
    }
 }
 

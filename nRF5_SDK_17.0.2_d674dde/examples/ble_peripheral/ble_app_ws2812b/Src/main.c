@@ -48,11 +48,13 @@
 
 #include "nordic_common.h"
 #include "nrf.h"
-#include "bleapp.h"
 #include "ws2812b.h"
+#include "frame.h"
 #include "nrf_delay.h"
 
 // Private define *************************************************************
+#define ROWS   15
+#define COLS   15
 
 // Private types     **********************************************************
 
@@ -72,19 +74,47 @@
  int main(void)
 {
    bool erase_bonds;
-    
-   static uint32_t i;
 
-   WS2812B_init();
-   bleapp_init();
+   // ws21812b init
+   WS2812B_HandleTypeDef_t ws2812b;
+   ws2812b.pixelcount = ROWS*COLS;
+   WS2812B_init( &ws2812b );
    
-   WS2812B_clearBuffer();
-   WS2812B_sendBuffer();
+   // frame init
+   Frame_HandleTypeDef_t frame;
+   frame.rows        = ROWS;
+   frame.cols        = COLS;
+   frame.ws2812b     = &ws2812b;
+   frame.bleServices = true;
+   frame_init( &frame );
+
+   // prepare buffer for demo
+   frame_clearBuffer();
+   frame_sendBuffer();
    
    // Enter main loop.
    for (;;)
    {
-      WS2812B_sendBuffer();
-      nrf_delay_ms(100); 
+      static uint16_t i;
+      static uint8_t b;
+      static uint8_t r=0xff;
+      static uint32_t row;
+      static uint32_t col;
+      
+      frame_clearBuffer();
+      
+      if(col%frame.cols==0)
+      {
+        row++;
+      }
+      else
+      {
+        col++;
+      }
+        
+      frame_setPixel( 14, 1, --r, 0x00, ++b ); //x/y
+      
+      frame_sendBuffer();
+      nrf_delay_ms(i%PIXEL_COUNT); 
    }
 }

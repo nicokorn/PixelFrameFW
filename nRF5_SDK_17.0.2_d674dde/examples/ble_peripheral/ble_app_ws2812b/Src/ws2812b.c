@@ -67,9 +67,9 @@
 // Private types     **********************************************************
 
 // Private variables **********************************************************
-static WS2812B_StatusTypeDef WS2812B_State = WS2812B_RESET; 
+static WS2812B_StatusTypeDef *WS2812B_StatePWM; 
 static nrf_drv_pwm_t m_pwm0 = NRF_DRV_PWM_INSTANCE(0);
-static nrf_pwm_values_common_t WS2812B_Buffer[WS2812B_RESET_LOW+PIXEL_COUNT*PIXEL_BIT_SIZE];
+static nrf_pwm_values_common_t WS2812B_Buffer[WS2812B_RESET_LOW+PIXEL_COUNTMAX*PIXEL_BIT_SIZE];
 nrf_pwm_sequence_t const seq =
 {
     .values.p_common = WS2812B_Buffer,
@@ -94,28 +94,37 @@ void WS2812B_pwmhandler( nrf_drv_pwm_evt_type_t event_type )
 {
    if( event_type == NRF_DRV_PWM_EVT_FINISHED )
    {
-      WS2812B_State = WS2812B_READY;
+      *WS2812B_StatePWM = WS2812B_READY;
    }
 }
 
 // ----------------------------------------------------------------------------
 /// \brief     Initialisation of the periphherals for using the ws2812b leds.
 ///
-/// \param     none
+/// \param     [in]   WS2812B_HandleTypeDef_t ws2812b_instance 
 ///
 /// \return    none
-WS2812B_StatusTypeDef WS2812B_init( void )
+WS2812B_StatusTypeDef WS2812B_init( WS2812B_HandleTypeDef_t *ws2812b_instance )
 {
    // init pins
    nrf_gpio_cfg_output(WS2812B);
    nrf_gpio_pin_clear(WS2812B);
+   
+   // check parameters
+   if( ws2812b_instance->pixelcount > PIXEL_COUNTMAX )
+   {
+     // error: stay here, implement an error handler
+     while(1);
+   }
+   
+   ws2812b_instance->state = WS2812B_RESET;
   
    // the end of the data buffer needs to set the output low for at least 50 us,
    // so the leds will accept their bit shiftregisters. This is done by 0 duty
    // cycles for WS2812B_RESET_LOW times.
    for(uint8_t i=0; i<WS2812B_RESET_LOW; i++)
    {
-      WS2812B_Buffer[PIXEL_COUNT*PIXEL_BIT_SIZE+i] = 0x8000;
+      WS2812B_Buffer[ws2812b_instance->pixelcount*PIXEL_BIT_SIZE+i] = 0x8000;
    }
 
     nrf_drv_pwm_config_t const config0 =
@@ -136,7 +145,11 @@ WS2812B_StatusTypeDef WS2812B_init( void )
     };
     APP_ERROR_CHECK(nrf_drv_pwm_init(&m_pwm0, &config0, WS2812B_pwmhandler));
     
-    WS2812B_State = WS2812B_READY;
+    // register pointer to state for the pwm handler
+    WS2812B_StatePWM = &ws2812b_instance->state;
+    
+    // set state to ready
+    ws2812b_instance->state = WS2812B_READY;
     
     return WS2812B_OK;
 }
@@ -147,13 +160,13 @@ WS2812B_StatusTypeDef WS2812B_init( void )
 /// \param     none
 ///
 /// \return    none
-void WS2812B_sendBuffer( void )
+void WS2812B_sendBuffer( WS2812B_HandleTypeDef_t *ws2812b_instance )
 {
-   WS2812B_State = WS2812B_BUSY;
+   ws2812b_instance->state = WS2812B_BUSY;
   
    nrf_drv_pwm_simple_playback(&m_pwm0, &seq, 1, NRF_DRV_PWM_FLAG_STOP);
     
-   while( WS2812B_State != WS2812B_READY );
+   while( ws2812b_instance->state != WS2812B_READY );
 }
 
 // ----------------------------------------------------------------------------
@@ -162,9 +175,9 @@ void WS2812B_sendBuffer( void )
 /// \param     none
 ///
 /// \return    none
-void WS2812B_clearBuffer( void )
+void WS2812B_clearBuffer( WS2812B_HandleTypeDef_t *ws2812b_instance )
 {
-   for( uint16_t i=0; i<PIXEL_COUNT*PIXEL_BIT_SIZE; i++ )
+   for( uint16_t i=0; i<ws2812b_instance->pixelcount*PIXEL_BIT_SIZE; i++ )
    {
       WS2812B_Buffer[i] = WS2812B_0;
    }
@@ -179,9 +192,9 @@ void WS2812B_clearBuffer( void )
 /// \param      [in]    uint8_t blue
 ///
 /// \return     none
-void WS2812B_setPixel( uint16_t pixel_pos, uint8_t red, uint8_t green, uint8_t blue )
+void WS2812B_setPixel(  WS2812B_HandleTypeDef_t *ws2812b_instance, uint16_t pixel_pos, uint8_t red, uint8_t green, uint8_t blue )
 {
-  if( pixel_pos>PIXEL_COUNT )
+  if( pixel_pos>ws2812b_instance->pixelcount )
   {
     return;
   }

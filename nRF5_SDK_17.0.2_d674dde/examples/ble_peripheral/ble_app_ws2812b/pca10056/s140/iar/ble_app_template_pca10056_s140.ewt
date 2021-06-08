@@ -1432,6 +1432,9 @@
                 <name>$PROJ_DIR$\..\..\..\Inc\bleapp_services.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\..\Inc\frame.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\config\sdk_config.h</name>
             </file>
             <file>
@@ -1445,6 +1448,9 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\..\Src\bleapp_services.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\..\Src\frame.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\..\Src\main.c</name>
