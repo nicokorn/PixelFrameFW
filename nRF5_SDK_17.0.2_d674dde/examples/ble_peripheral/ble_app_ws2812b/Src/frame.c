@@ -81,8 +81,9 @@ void frame_init( Frame_HandleTypeDef_t *frame_instance )
      // pixelcount is not inline with the amount of columns and rows
      while(1);
    } 
-   
+
    frame_core = frame_instance;
+   frame_core->sendBuffer = false;
    
    if( frame_core->bleServices == true )
    {
@@ -126,25 +127,26 @@ void frame_clearBuffer( void )
 void frame_setPixel( uint16_t col, uint16_t row, uint8_t red, uint8_t green, uint8_t blue )
 {
    // check for led consistency
-   if( col > frame_core->cols || row > frame_core->rows )
+   if( col >= frame_core->cols || row >= frame_core->rows )
    {
       // error: stay here, implement an error handler
-      while(1);
+      return;
    }
    
    // calculate the pixelnumber on the stream with col and row coordinates
    uint16_t pixelnumber=0;
    if(row%2==0)
    {
-     pixelnumber = ++row*++col;
+     pixelnumber = (row*frame_core->cols) + col;
    }
    else
    {
-     pixelnumber = ++row*(frame_core->cols-++col);
+     pixelnumber = (row*frame_core->cols) + (frame_core->cols-col);
+     pixelnumber--;
    }
    
    // set the pixel in the ws2812b pixel buffer
-   WS2812B_setPixel( frame_core->ws2812b, --pixelnumber, red, green, blue );
+   WS2812B_setPixel( frame_core->ws2812b, pixelnumber, red, green, blue );
 }
 
 // ----------------------------------------------------------------------------
@@ -167,4 +169,43 @@ uint16_t frame_getRowCount( void )
 uint16_t frame_getColCount( void )
 {
   return frame_core->cols;
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Returns pointer to ws2812b buffer.
+///
+/// \param     none
+///
+/// \return    uint8_t* pixelbuffer
+uint8_t* frame_getBuffer( void )
+{
+  return frame_core->ws2812b->pixelbuffer;
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Frame task used to send the buffer to the frame triggered by
+///            a flag.
+///
+/// \param     none
+///
+/// \return    none
+void frame_task( void )
+{
+   if( frame_core->sendBuffer != false )
+   {
+      frame_sendBuffer();
+      frame_core->sendBuffer = false;
+   }
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Set buffer flag to send the buffer to the frame in the frame_task
+///            function.
+///
+/// \param     none
+///
+/// \return    none
+void frame_reqSendBuffer( void )
+{
+   frame_core->sendBuffer = true;
 }

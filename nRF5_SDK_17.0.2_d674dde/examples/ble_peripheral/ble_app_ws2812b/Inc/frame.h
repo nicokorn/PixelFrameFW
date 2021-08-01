@@ -59,6 +59,7 @@ typedef struct Frame_HandleTypeDef_s
    uint16_t                   cols;
    WS2812B_HandleTypeDef_t*   ws2812b;
    bool                       bleServices;
+   bool                       sendBuffer;
 }Frame_HandleTypeDef_t;
 
 // Exported functions *********************************************************
@@ -68,4 +69,7 @@ void     frame_clearBuffer    ( void );
 void     frame_setPixel       ( uint16_t col, uint16_t row, uint8_t red, uint8_t green, uint8_t blue );
 uint16_t frame_getRowCount    ( void );
 uint16_t frame_getColCount    ( void );
+uint8_t* frame_getBuffer      ( void );
+void     frame_task           ( void );
+void     frame_reqSendBuffer  ( void );
 #endif // __FRAME_H__FRAME_H

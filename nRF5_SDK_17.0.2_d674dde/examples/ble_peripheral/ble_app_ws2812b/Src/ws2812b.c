@@ -57,7 +57,6 @@
 #include "ws2812b.h"
 
 // Private define *************************************************************
-#define PIXEL_BIT_SIZE           ( 24u )
 #define WS2812B_PWM_T            ( 20u ) // 20 ticks @ 16 MHz equals 1250 ns
 #define WS2812B_1                ( 15u | 0x8000 ) // 15 ticks @ 16 MHz equals 937.5 ns, the MSB defines the PWM polarity during the sequence
 #define WS2812B_0                ( 6u | 0x8000 )  // 6 ticks @ 16 MHz equals 375 ns, the MSB defines the PWM polarity during the sequence

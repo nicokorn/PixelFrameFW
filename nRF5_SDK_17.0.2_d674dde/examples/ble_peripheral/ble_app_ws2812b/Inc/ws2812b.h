@@ -50,6 +50,7 @@
 
 // Exported defines ***********************************************************
 #define PIXEL_COUNTMAX           ( 1024u )
+#define PIXEL_BIT_SIZE           ( 24u )
 
 //#define ONBOARD_LED   // used if a ws2812b led stripe is attached to GPIO Port 0, Pin 16
 #define STRIPE_LED   // used if a ws2812b led stripe is attached to GPIO Port 0, Pin 4

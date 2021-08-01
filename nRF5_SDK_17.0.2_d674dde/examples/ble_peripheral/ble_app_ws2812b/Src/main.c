@@ -71,7 +71,7 @@
 /// \param     none
 ///
 /// \return    none
- int main(void)
+int main(void)
 {
    bool erase_bonds;
 
@@ -88,33 +88,14 @@
    frame.bleServices = true;
    frame_init( &frame );
 
-   // prepare buffer for demo
+   // reset buffer
    frame_clearBuffer();
    frame_sendBuffer();
    
    // Enter main loop.
    for (;;)
    {
-      static uint16_t i;
-      static uint8_t b;
-      static uint8_t r=0xff;
-      static uint32_t row;
-      static uint32_t col;
-      
-      frame_clearBuffer();
-      
-      if(col%frame.cols==0)
-      {
-        row++;
-      }
-      else
-      {
-        col++;
-      }
-        
-      frame_setPixel( 14, 1, --r, 0x00, ++b ); //x/y
-      
-      frame_sendBuffer();
-      nrf_delay_ms(i%PIXEL_COUNT); 
+      frame_task();
+      nrf_delay_ms(10); 
    }
 }

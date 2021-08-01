@@ -105,6 +105,8 @@
 
 #define DEAD_BEEF                       0xDEADBEEF                              /**< Value used as error code on stack dump, can be used to identify stack location on stack unwind. */
 
+#define APP_FEATURE_NOT_SUPPORTED       BLE_GATT_STATUS_ATTERR_APP_BEGIN + 2        /**< Reply when unsupported features are requested. */
+
 
 NRF_BLE_GATT_DEF(m_gatt);                                                       /**< GATT module instance. */
 BLE_WS2812B_DEF(m_ws2812bService);                                              /**< ws2812b Service instance. */
@@ -243,34 +245,6 @@ static void nrf_qwr_error_handler(uint32_t nrf_error)
     APP_ERROR_HANDLER(nrf_error);
 }
 
-
-/**@brief Function for handling the YYY Service events.
- * YOUR_JOB implement a service handler function depending on the event the service you are using can generate
- *
- * @details This function will be called for all YY Service events which are passed to
- *          the application.
- *
- * @param[in]   p_yy_service   YY Service structure.
- * @param[in]   p_evt          Event received from the YY Service.
- *
- *
-static void on_yys_evt(ble_yy_service_t     * p_yy_service,
-                       ble_yy_service_evt_t * p_evt)
-{
-    switch (p_evt->evt_type)
-    {
-        case BLE_YY_NAME_EVT_WRITE:
-            APPL_LOG("[APPL]: charact written with value %s. ", p_evt->params.char_xx.value.p_str);
-            break;
-
-        default:
-            // No implementation needed.
-            break;
-    }
-}
-*/
-
-
 /**@brief Function for initializing services that will be used by the application.
  */
 static void services_init( void )
@@ -280,6 +254,10 @@ static void services_init( void )
 
     // Initialize Queued Write Module.
     qwr_init.error_handler = nrf_qwr_error_handler;
+    //qwr_init.mem_buffer.len   = MEM_BUFF_SIZE;
+    //qwr_init.mem_buffer.p_mem = m_buffer;
+    //qwr_init.error_handler    = service_error_handler;
+    //qwr_init.callback         = queued_write_handler;
 
     err_code = nrf_ble_qwr_init(&m_qwr, &qwr_init);
     APP_ERROR_CHECK(err_code);
@@ -290,29 +268,6 @@ static void services_init( void )
    // ws2812b controller service
    err_code = bleapp_services_ws2812b(&m_ws2812bService);
    APP_ERROR_CHECK(err_code);
-
-    /* YOUR_JOB: Add code to initialize the services used by the application.
-       ble_xxs_init_t                     xxs_init;
-       ble_yys_init_t                     yys_init;
-
-       // Initialize XXX Service.
-       memset(&xxs_init, 0, sizeof(xxs_init));
-
-       xxs_init.evt_handler                = NULL;
-       xxs_init.is_xxx_notify_supported    = true;
-       xxs_init.ble_xx_initial_value.level = 100;
-
-       err_code = ble_bas_init(&m_xxs, &xxs_init);
-       APP_ERROR_CHECK(err_code);
-
-       // Initialize YYY Service.
-       memset(&yys_init, 0, sizeof(yys_init));
-       yys_init.evt_handler                  = on_yys_evt;
-       yys_init.ble_yy_initial_value.counter = 0;
-
-       err_code = ble_yy_service_init(&yys_init, &yy_init);
-       APP_ERROR_CHECK(err_code);
-     */
 }
 
 
@@ -469,7 +424,19 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
             err_code = sd_ble_gap_phy_update(p_ble_evt->evt.gap_evt.conn_handle, &phys);
             APP_ERROR_CHECK(err_code);
         } break;
+        
+        case BLE_GAP_EVT_SEC_PARAMS_REQUEST:
+            // Pairing not supported
+            err_code = sd_ble_gap_sec_params_reply(m_conn_handle, BLE_GAP_SEC_STATUS_PAIRING_NOT_SUPP, NULL, NULL);
+            APP_ERROR_CHECK(err_code);
+            break; // BLE_GAP_EVT_SEC_PARAMS_REQUEST
 
+        case BLE_GATTS_EVT_SYS_ATTR_MISSING:
+            // No system attributes have been stored.
+            err_code = sd_ble_gatts_sys_attr_set(m_conn_handle, NULL, 0, 0);
+            APP_ERROR_CHECK(err_code);
+            break; // BLE_GATTS_EVT_SYS_ATTR_MISSING
+            
         case BLE_GATTC_EVT_TIMEOUT:
             // Disconnect on GATT Client timeout event.
             NRF_LOG_DEBUG("GATT Client Timeout.");
@@ -485,6 +452,40 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
                                              BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);
             APP_ERROR_CHECK(err_code);
             break;
+            
+        //case BLE_EVT_USER_MEM_REQUEST:
+        //    err_code = sd_ble_user_mem_reply(m_conn_handle, NULL);
+        //    APP_ERROR_CHECK(err_code);
+        //    break; // BLE_EVT_USER_MEM_REQUEST
+        //
+        //case BLE_GATTS_EVT_RW_AUTHORIZE_REQUEST:
+        //{
+        //    ble_gatts_evt_rw_authorize_request_t  req;
+        //    ble_gatts_rw_authorize_reply_params_t auth_reply;
+        //
+        //    req = p_ble_evt->evt.gatts_evt.params.authorize_request;
+        //
+        //    if (req.type != BLE_GATTS_AUTHORIZE_TYPE_INVALID)
+        //    {
+        //        if ((req.request.write.op == BLE_GATTS_OP_PREP_WRITE_REQ)     ||
+        //            (req.request.write.op == BLE_GATTS_OP_EXEC_WRITE_REQ_NOW) ||
+        //            (req.request.write.op == BLE_GATTS_OP_EXEC_WRITE_REQ_CANCEL))
+        //        {
+        //            if (req.type == BLE_GATTS_AUTHORIZE_TYPE_WRITE)
+        //            {
+        //                auth_reply.type = BLE_GATTS_AUTHORIZE_TYPE_WRITE;
+        //            }
+        //            else
+        //            {
+        //                auth_reply.type = BLE_GATTS_AUTHORIZE_TYPE_READ;
+        //            }
+        //            auth_reply.params.write.gatt_status = APP_FEATURE_NOT_SUPPORTED;
+        //            err_code = sd_ble_gatts_rw_authorize_reply(p_ble_evt->evt.gatts_evt.conn_handle,
+        //                                                       &auth_reply);
+        //            APP_ERROR_CHECK(err_code);
+        //        }
+        //    }
+        //} break; // BLE_GATTS_EVT_RW_AUTHORIZE_REQUEST
 
         default:
             // No implementation needed.
