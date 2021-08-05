@@ -35,6 +35,7 @@
 #include "sdk_common.h"
 #include "frame.h"
 #include "ws2812b.h"
+#include "app_error.h"
 
 // Private define *************************************************************
 
@@ -91,15 +92,9 @@ static void on_write( ble_ws2812b_service_t * p_lbs, ble_evt_t const * p_ble_evt
       
    }
    else if( (p_evt_write->handle == p_lbs->pixel_char_handles.value_handle)
-      && (p_evt_write->len == 7) )
+      && (p_evt_write->len == 8) )
    {
-      uint16_t col = *(uint16_t*)&p_evt_write->data[0];
-      uint16_t row = *(uint16_t*)&p_evt_write->data[2];
-      uint8_t r = p_evt_write->data[4];
-      uint8_t g = p_evt_write->data[5];
-      uint8_t b = p_evt_write->data[6];
-      frame_setPixel( col, row, r, g, b );
-      frame_reqSendBuffer();
+      on_char_pixel( p_evt_write->data );
    }
    else if( (p_evt_write->handle == p_lbs->picture_char_handles.value_handle) )
    {
@@ -116,17 +111,16 @@ static void on_write( ble_ws2812b_service_t * p_lbs, ble_evt_t const * p_ble_evt
 void on_char_picture( const uint8_t *dPointer )
 {
    // get offset and size
-   //uint16_t offset = *(uint16_t*)&blePicBuffer[0];
-   //uint16_t size = *(uint16_t*)&blePicBuffer[2];
    uint16_t i,j;
-   uint16_t offset = *(uint16_t*)&dPointer[0];
-   uint16_t size = *(uint16_t*)&dPointer[2];
-   uint16_t col = 0;
-   uint16_t row = 0;
-   uint16_t pixelPacketSize = size/3;
-   uint16_t pixelOffset = offset/3;
-   uint8_t  cmdField = dPointer[4];
-   
+   uint8_t  cmd               = dPointer[0];
+   uint16_t offset            = *(uint16_t*)&dPointer[1];
+   uint16_t size              = *(uint16_t*)&dPointer[3];
+   uint16_t col               = 0;
+   uint16_t row               = 0;
+   uint16_t pixelPacketSize   = size/3;
+   uint16_t pixelOffset       = offset/3;
+
+   // retrieve rgb data and write it into the framebuffer
    for( uint16_t pixel = 0; pixel < pixelPacketSize; pixel++ )
    {
       // calculate coordinates
@@ -134,16 +128,49 @@ void on_char_picture( const uint8_t *dPointer )
       col = ( pixel +  pixelOffset )%frame_getRowCount();
       
       // write rgb at coordinates
-      if(row<=frame_getRowCount())
+      if( row <= frame_getRowCount() )
       {
-         //frame_setPixel( col, row, blePicBuffer[i+PICTURE_HEADER_OFFSET], blePicBuffer[i+PICTURE_HEADER_OFFSET+1], blePicBuffer[i+PICTURE_HEADER_OFFSET+2] );
          frame_setPixel( col, row, dPointer[(pixel*3)+PICTURE_HEADER_OFFSET], dPointer[(pixel*3)+PICTURE_HEADER_OFFSET+1], dPointer[(pixel*3)+PICTURE_HEADER_OFFSET+2] );
       }
    }
    
-   if( (cmdField & CMD_BIT_REFRESH) == CMD_BIT_REFRESH )
+   // command field parsing
+   if( (cmd & CMD_BIT_REFRESH) == CMD_BIT_REFRESH )
    {
       frame_reqSendBuffer();
+   }
+   if( (cmd & CMD_BIT_CLEARALL) == CMD_BIT_CLEARALL )
+   {
+      frame_clearBuffer();
+   }
+}
+      
+// ----------------------------------------------------------------------------
+/// \brief     Function for handling the pixel write event.
+///
+/// \param     [in] uint8_t *dPointer
+///
+/// \return    none
+void on_char_pixel( const uint8_t *dPointer )
+{
+   uint8_t cmd    = dPointer[0];
+   uint16_t col   = *(uint16_t*)&dPointer[1];
+   uint16_t row   = *(uint16_t*)&dPointer[3];
+   uint8_t r      = dPointer[5];
+   uint8_t g      = dPointer[6];
+   uint8_t b      = dPointer[7];
+   
+   // retrieve rgb data and write it into the framebuffer
+   frame_setPixel( col, row, r, g, b );
+
+   // command field parsing
+   if( (cmd & CMD_BIT_REFRESH) == CMD_BIT_REFRESH )
+   {
+      frame_reqSendBuffer();
+   }
+   if( (cmd & CMD_BIT_CLEARALL) == CMD_BIT_CLEARALL )
+   {
+      frame_clearBuffer();
    }
 }
 
@@ -170,26 +197,7 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
    
    err_code = sd_ble_gatts_service_add( BLE_GATTS_SRVC_TYPE_PRIMARY, &ble_uuid, &p_lbs->service_handle );
    VERIFY_SUCCESS(err_code);
-   
-   // Add command characteristic.
-   memset(&add_char_params, 0, sizeof(add_char_params));
-   add_char_params.uuid             = UUID_WS2812B_CMD_CHAR;
-   add_char_params.uuid_type        = p_lbs->uuid_type;
-   add_char_params.init_len         = sizeof(uint8_t);
-   add_char_params.max_len          = sizeof(uint8_t);
-   add_char_params.char_props.read  = 1;
-   add_char_params.char_props.write = 1;
-   
-   add_char_params.read_access      = SEC_OPEN;
-   add_char_params.write_access     = SEC_OPEN;
-   
-   err_code = characteristic_add(p_lbs->service_handle, &add_char_params, &p_lbs->cmd_char_handles);
-   
-   if (err_code != NRF_SUCCESS)
-   {
-      return err_code;
-   }
-   
+
    // Add row characteristic.
    memset(&add_char_params, 0, sizeof(add_char_params));
    add_char_params.uuid                = UUID_WS2812B_ROW_CHAR;
@@ -232,8 +240,8 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
    memset(&add_char_params, 0, sizeof(add_char_params));
    add_char_params.uuid                = UUID_WS2812B_PIXEL_CHAR;
    add_char_params.uuid_type           = p_lbs->uuid_type;
-   add_char_params.init_len            = 7; // 2(row), 2(col), 3(rgb)
-   add_char_params.max_len             = 7;
+   add_char_params.init_len            = 8; // 1 (cmd), 2(row), 2(col), 3(rgb)
+   add_char_params.max_len             = 8;
    add_char_params.char_props.read     = 1;
    add_char_params.char_props.write    = 1;
    
@@ -247,7 +255,7 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
       return err_code;
    }
    
-   // Add pixel characteristic.
+   // Add picture characteristic.
    memset(&add_char_params, 0, sizeof(add_char_params));
    add_char_params.uuid                = UUID_WS2812B_PICTURE_CHAR;
    add_char_params.uuid_type           = p_lbs->uuid_type;
@@ -298,4 +306,61 @@ uint32_t bleapp_services_setChar( uint16_t conn_handle, uint16_t value_handle, u
     params.p_len  = &len;
 
     return sd_ble_gatts_hvx(conn_handle, &params);
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Set resolution on ble service
+///
+/// \param     [in]  uint16_t col
+/// \param     [in]  uint16_t row
+///
+/// \return    none
+void bleapp_services_setResolution( uint16_t conn_handle, ble_ws2812b_service_t m_ws2812bService, uint16_t col, uint16_t row )
+{
+   ret_code_t err_code;
+   
+   if( conn_handle != BLE_CONN_HANDLE_INVALID )
+   {
+      err_code = bleapp_services_setCharNotify( conn_handle, m_ws2812bService.col_char_handles.value_handle, (uint8_t*)&col, sizeof(uint16_t) );
+      if (err_code != NRF_SUCCESS &&
+         err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+         err_code != NRF_ERROR_INVALID_STATE &&
+         err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+      {
+         APP_ERROR_CHECK(err_code);
+      }
+      
+      err_code = bleapp_services_setCharNotify( conn_handle, m_ws2812bService.row_char_handles.value_handle, (uint8_t*)&row, sizeof(uint16_t) );
+      if (err_code != NRF_SUCCESS &&
+         err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+         err_code != NRF_ERROR_INVALID_STATE &&
+         err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+      {
+         APP_ERROR_CHECK(err_code);
+      }
+   }
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Set frame on ble service
+///
+/// \param     [in]  buffer
+/// \param     [in]  length
+///
+/// \return    none
+void bleapp_services_setFrame( uint16_t conn_handle, ble_ws2812b_service_t m_ws2812bService, uint8_t* buffer, uint16_t length )
+{
+   ret_code_t err_code;
+   
+   if( conn_handle != BLE_CONN_HANDLE_INVALID )
+   {
+      err_code = bleapp_services_setCharNotify( conn_handle, m_ws2812bService.picture_char_handles.value_handle, (uint8_t*)&buffer, length );
+      if (err_code != NRF_SUCCESS &&
+         err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+         err_code != NRF_ERROR_INVALID_STATE &&
+         err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+      {
+         APP_ERROR_CHECK(err_code);
+      }
+   }
 }

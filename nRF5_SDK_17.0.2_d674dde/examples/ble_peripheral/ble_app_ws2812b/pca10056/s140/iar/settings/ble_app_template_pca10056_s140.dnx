@@ -12,8 +12,8 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <PlDriver>
-        <FirstRun>0</FirstRun>
         <MemConfigValue>C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\CONFIG\debugger\NordicSemi\nRF52840_xxAA.ddf</MemConfigValue>
+        <FirstRun>0</FirstRun>
     </PlDriver>
     <JLinkDriver>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
@@ -25,7 +25,7 @@
         <EnableCache>0</EnableCache>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>663953956</Checksum>
+        <Checksum>684352109</Checksum>
     </DebugChecksum>
     <Disassembly>
         <MixedMode>1</MixedMode>

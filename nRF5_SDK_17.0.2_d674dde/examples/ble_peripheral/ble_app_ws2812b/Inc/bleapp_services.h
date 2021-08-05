@@ -65,6 +65,7 @@ NRF_SDH_BLE_OBSERVER(_name ## _obs,                \
 #define MAX_BLE_SIZE                512u
 
 #define CMD_BIT_REFRESH            0x01u
+#define CMD_BIT_CLEARALL           0x02u
 
 // Exported types *************************************************************
 
@@ -117,9 +118,12 @@ void bleapp_services_ws2812b_evt( ble_evt_t const * p_ble_evt, void * p_context 
  *
  * @retval NRF_SUCCESS If the notification was sent successfully. Otherwise, an error code is returned.
  */
-uint32_t bleapp_services_on_button_change ( uint16_t conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t button_state );
-uint32_t bleapp_services_setCharNotify    ( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
-uint32_t bleapp_services_setChar          ( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
-void     on_char_picture                  ( const uint8_t *dPointer );
+uint32_t bleapp_services_on_button_change       ( uint16_t conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t button_state );
+uint32_t bleapp_services_setCharNotify          ( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
+uint32_t bleapp_services_setChar                ( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
+void     on_char_picture                        ( const uint8_t *dPointer );
+void     on_char_pixel                          ( const uint8_t *dPointer );
+void     bleapp_services_setResolution          ( uint16_t conn_handle, ble_ws2812b_service_t m_ws2812bService, uint16_t col, uint16_t row );
+void     bleapp_services_setFrame               ( uint16_t conn_handle, ble_ws2812b_service_t m_ws2812bService, uint8_t* buffer, uint16_t length );
 
 #endif // __BLEAPP_SERVICES_H
