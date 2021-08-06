@@ -120,6 +120,7 @@ void bleapp_services_ws2812b_evt( ble_evt_t const * p_ble_evt, void * p_context 
  */
 uint32_t bleapp_services_on_button_change       ( uint16_t conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t button_state );
 uint32_t bleapp_services_setCharNotify          ( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
+uint32_t bleapp_services_setCharIndication      ( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
 uint32_t bleapp_services_setChar                ( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
 void     on_char_picture                        ( const uint8_t *dPointer );
 void     on_char_pixel                          ( const uint8_t *dPointer );

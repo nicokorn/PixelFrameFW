@@ -48,17 +48,6 @@ static uint8_t blePicBuffer[MAX_BLE_SIZE];
 static void on_write( ble_ws2812b_service_t * p_lbs, ble_evt_t const * p_ble_evt );
 
 // Functions ******************************************************************
-// ----------------------------------------------------------------------------
-/// \brief     Init the uv curer services and characteristics
-///
-/// \param     none
-///
-/// \return    none
-void bleapp_services_init( void )
-{
-
-}
-
 void bleapp_services_ws2812b_evt( ble_evt_t const * p_ble_evt, void * p_context )
 {
     ble_ws2812b_service_t * p_lbs = (ble_ws2812b_service_t *)p_context;
@@ -205,10 +194,10 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
    add_char_params.init_len            = sizeof(uint16_t);
    add_char_params.max_len             = sizeof(uint16_t);
    add_char_params.char_props.read     = 1;
-   add_char_params.char_props.notify   = 1;
+   add_char_params.char_props.write    = 1;
    
    add_char_params.read_access         = SEC_OPEN;
-   add_char_params.cccd_write_access   = SEC_OPEN;
+   add_char_params.write_access        = SEC_OPEN;
    
    err_code = characteristic_add(p_lbs->service_handle, &add_char_params, &p_lbs->row_char_handles);
    
@@ -224,10 +213,10 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
    add_char_params.init_len            = sizeof(uint16_t);
    add_char_params.max_len             = sizeof(uint16_t);
    add_char_params.char_props.read     = 1;
-   add_char_params.char_props.notify   = 1;
+   add_char_params.char_props.write    = 1;
    
    add_char_params.read_access         = SEC_OPEN;
-   add_char_params.cccd_write_access   = SEC_OPEN;
+   add_char_params.write_access        = SEC_OPEN;
    
    err_code = characteristic_add(p_lbs->service_handle, &add_char_params, &p_lbs->col_char_handles);
    
@@ -259,8 +248,8 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
    memset(&add_char_params, 0, sizeof(add_char_params));
    add_char_params.uuid                = UUID_WS2812B_PICTURE_CHAR;
    add_char_params.uuid_type           = p_lbs->uuid_type;
-   add_char_params.init_len            = 510;
-   add_char_params.max_len             = 510;
+   add_char_params.init_len            = 509;
+   add_char_params.max_len             = 509;
    add_char_params.char_props.read     = 1;
    add_char_params.char_props.write    = 1;
    
@@ -282,6 +271,15 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
    return err_code;
 }
 
+// ----------------------------------------------------------------------------
+/// \brief     Set char with notification.
+///
+/// \param     [in] uint16_t conn_handle
+/// \param     [in] uint16_t value_handle
+/// \param     [in] uint8_t* data
+/// \param     [in] uint16_t len
+///
+/// \return    err_code
 uint32_t bleapp_services_setCharNotify( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len )
 {
     ble_gatts_hvx_params_t params;
@@ -295,7 +293,16 @@ uint32_t bleapp_services_setCharNotify( uint16_t conn_handle, uint16_t value_han
     return sd_ble_gatts_hvx(conn_handle, &params);
 }
 
-uint32_t bleapp_services_setChar( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len )
+// ----------------------------------------------------------------------------
+/// \brief     Set char with indication.
+///
+/// \param     [in] uint16_t conn_handle
+/// \param     [in] uint16_t value_handle
+/// \param     [in] uint8_t* data
+/// \param     [in] uint16_t len
+///
+/// \return    err_code
+uint32_t bleapp_services_setCharIndication( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len )
 {
     ble_gatts_hvx_params_t params;
 
@@ -309,8 +316,31 @@ uint32_t bleapp_services_setChar( uint16_t conn_handle, uint16_t value_handle, u
 }
 
 // ----------------------------------------------------------------------------
+/// \brief     Set char.
+///
+/// \param     [in] uint16_t conn_handle
+/// \param     [in] uint16_t value_handle
+/// \param     [in] uint8_t* data
+/// \param     [in] uint16_t len
+///
+/// \return    err_code
+uint32_t bleapp_services_setChar( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len )
+{
+    ble_gatts_value_t params;
+
+    memset(&params, 0, sizeof(params));
+    params.len   = len;
+    params.offset = 0;
+    params.p_value = data;
+
+    return sd_ble_gatts_value_set(conn_handle, value_handle, &params);
+}
+
+// ----------------------------------------------------------------------------
 /// \brief     Set resolution on ble service
 ///
+/// \param     [in]  uint16_t conn_handle
+/// \param     [in]  ble_ws2812b_service_t m_ws2812bService
 /// \param     [in]  uint16_t col
 /// \param     [in]  uint16_t row
 ///
@@ -319,25 +349,22 @@ void bleapp_services_setResolution( uint16_t conn_handle, ble_ws2812b_service_t 
 {
    ret_code_t err_code;
    
-   if( conn_handle != BLE_CONN_HANDLE_INVALID )
+   err_code = bleapp_services_setChar( conn_handle, m_ws2812bService.col_char_handles.value_handle, (uint8_t*)&col, sizeof(uint16_t) );
+   if (err_code != NRF_SUCCESS &&
+      err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+      err_code != NRF_ERROR_INVALID_STATE &&
+      err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
    {
-      err_code = bleapp_services_setCharNotify( conn_handle, m_ws2812bService.col_char_handles.value_handle, (uint8_t*)&col, sizeof(uint16_t) );
-      if (err_code != NRF_SUCCESS &&
-         err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
-         err_code != NRF_ERROR_INVALID_STATE &&
-         err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
-      {
-         APP_ERROR_CHECK(err_code);
-      }
-      
-      err_code = bleapp_services_setCharNotify( conn_handle, m_ws2812bService.row_char_handles.value_handle, (uint8_t*)&row, sizeof(uint16_t) );
-      if (err_code != NRF_SUCCESS &&
-         err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
-         err_code != NRF_ERROR_INVALID_STATE &&
-         err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
-      {
-         APP_ERROR_CHECK(err_code);
-      }
+      APP_ERROR_CHECK(err_code);
+   }
+   
+   err_code = bleapp_services_setChar( conn_handle, m_ws2812bService.row_char_handles.value_handle, (uint8_t*)&row, sizeof(uint16_t) );
+   if (err_code != NRF_SUCCESS &&
+      err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+      err_code != NRF_ERROR_INVALID_STATE &&
+      err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+   {
+      APP_ERROR_CHECK(err_code);
    }
 }
 

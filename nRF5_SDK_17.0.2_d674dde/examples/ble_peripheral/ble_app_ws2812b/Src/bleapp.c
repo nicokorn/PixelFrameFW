@@ -268,6 +268,9 @@ static void services_init( void )
    // ws2812b controller service
    err_code = bleapp_services_ws2812b(&m_ws2812bService);
    APP_ERROR_CHECK(err_code);
+   
+   // set frame size on the characters
+   bleapp_services_setResolution(m_conn_handle, m_ws2812bService, frame_getRowCount(), frame_getColCount());
 }
 
 
@@ -410,9 +413,6 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
             m_conn_handle = p_ble_evt->evt.gap_evt.conn_handle;
             err_code = nrf_ble_qwr_conn_handle_assign(&m_qwr, m_conn_handle);
             APP_ERROR_CHECK(err_code);
-            //bleapp_services_setResolution(m_conn_handle, m_ws2812bService, frame_getRowCount(), frame_getColCount());
-            frame_clearBuffer();
-            frame_reqSendBuffer();
             break;
 
         case BLE_GAP_EVT_PHY_UPDATE_REQUEST:
@@ -455,40 +455,6 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
             APP_ERROR_CHECK(err_code);
             break;
             
-        //case BLE_EVT_USER_MEM_REQUEST:
-        //    err_code = sd_ble_user_mem_reply(m_conn_handle, NULL);
-        //    APP_ERROR_CHECK(err_code);
-        //    break; // BLE_EVT_USER_MEM_REQUEST
-        //
-        //case BLE_GATTS_EVT_RW_AUTHORIZE_REQUEST:
-        //{
-        //    ble_gatts_evt_rw_authorize_request_t  req;
-        //    ble_gatts_rw_authorize_reply_params_t auth_reply;
-        //
-        //    req = p_ble_evt->evt.gatts_evt.params.authorize_request;
-        //
-        //    if (req.type != BLE_GATTS_AUTHORIZE_TYPE_INVALID)
-        //    {
-        //        if ((req.request.write.op == BLE_GATTS_OP_PREP_WRITE_REQ)     ||
-        //            (req.request.write.op == BLE_GATTS_OP_EXEC_WRITE_REQ_NOW) ||
-        //            (req.request.write.op == BLE_GATTS_OP_EXEC_WRITE_REQ_CANCEL))
-        //        {
-        //            if (req.type == BLE_GATTS_AUTHORIZE_TYPE_WRITE)
-        //            {
-        //                auth_reply.type = BLE_GATTS_AUTHORIZE_TYPE_WRITE;
-        //            }
-        //            else
-        //            {
-        //                auth_reply.type = BLE_GATTS_AUTHORIZE_TYPE_READ;
-        //            }
-        //            auth_reply.params.write.gatt_status = APP_FEATURE_NOT_SUPPORTED;
-        //            err_code = sd_ble_gatts_rw_authorize_reply(p_ble_evt->evt.gatts_evt.conn_handle,
-        //                                                       &auth_reply);
-        //            APP_ERROR_CHECK(err_code);
-        //        }
-        //    }
-        //} break; // BLE_GATTS_EVT_RW_AUTHORIZE_REQUEST
-
         default:
             // No implementation needed.
             break;
