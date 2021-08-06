@@ -49,6 +49,7 @@
 #include "nrf.h"
 #include "stdbool.h"
 #include "ws2812b.h"
+#include "bleapp_services.h"
 
 // Exported defines ***********************************************************
 
@@ -60,6 +61,8 @@ typedef struct Frame_HandleTypeDef_s
    WS2812B_HandleTypeDef_t*   ws2812b;
    bool                       bleServices;
    bool                       sendBuffer;
+   uint16_t*                  bleConnHandle;
+   ble_ws2812b_service_t*     bleServicesObj;   
 }Frame_HandleTypeDef_t;
 
 // Exported functions *********************************************************

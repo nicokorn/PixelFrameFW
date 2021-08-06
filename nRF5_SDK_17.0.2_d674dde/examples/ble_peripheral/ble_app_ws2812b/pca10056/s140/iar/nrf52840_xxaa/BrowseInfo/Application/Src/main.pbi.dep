@@ -6,30 +6,45 @@ D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\b
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\modules\nrfx\soc\nrfx_atomic.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\modules\nrfx\soc\nrfx_coredep.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\util\app_error_weak.h \
-  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\util\sdk_errors.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\ycheck.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdio.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\util\app_error.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\nrf_nvic.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\nrf_error_soc.h \
-  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\nrf_error.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\nrf_soc.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\util\app_util_platform.h \
-  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\nrf_svc.h \
-  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\nrf52\nrf_mbr.h \
-  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\util\app_util.h \
-  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\util\nrf_assert.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\modules\nrfx\soc\nrfx_irqs_nrf52840.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\modules\nrfx\soc\nrfx_irqs.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\integration\nrfx\legacy\apply_old_config.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\integration\nrfx\nrfx_glue.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\modules\nrfx\mdk\nrf52840_peripherals.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\modules\nrfx\mdk\nrf_peripherals.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stddef.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\modules\nrfx\drivers\nrfx_common.h \
-  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\config\sdk_config.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\integration\nrfx\nrfx_config.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\delay\nrf_delay.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\util\sdk_errors.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\config\sdk_config.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\util\nrf_assert.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\experimental_section_vars\nrf_section.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\experimental_section_vars\nrf_section_iter.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\common\nrf_sdh_ble.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\nrf52\nrf_mbr.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stddef.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\libraries\util\app_util.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\ble\common\ble_srv_common.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\ble_gatts.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\ble_gattc.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\ble_gatt.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\ble_l2cap.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\ble_types.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\ble_ranges.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\ble_hci.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\ble_gap.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\ble_err.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\nrf_error.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\nrf_svc.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\components\softdevice\s140\headers\ble.h \
+  D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\Inc\bleapp_services.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\Inc\frame.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\Inc\ws2812b.h \
   D:\GitHub\NRF52840_WS2812B_BLE\nRF5_SDK_17.0.2_d674dde\examples\ble_peripheral\ble_app_ws2812b\pca10056\s140\iar\..\..\..\..\..\..\modules\nrfx\mdk\compiler_abstraction.h \

@@ -270,7 +270,7 @@ static void services_init( void )
    APP_ERROR_CHECK(err_code);
    
    // set frame size on the characters
-   bleapp_services_setResolution(m_conn_handle, m_ws2812bService, frame_getRowCount(), frame_getColCount());
+   bleapp_services_setResolution(&m_conn_handle, &m_ws2812bService, frame_getRowCount(), frame_getColCount());
 }
 
 
@@ -675,7 +675,7 @@ static void advertising_start(bool erase_bonds)
 
 /**@brief Function for application main entry.
  */
-void bleapp_init(void)
+void bleapp_init( void )
 {
 	 bool erase_bonds;
 
@@ -697,4 +697,14 @@ void bleapp_init(void)
     application_timers_start();
 
     advertising_start(erase_bonds);
+}
+
+uint16_t* bleapp_getConnHandle( void )
+{
+   return &m_conn_handle;
+}
+
+ble_ws2812b_service_t* bleapp_getServiceObj( void )
+{
+   return &m_ws2812bService;
 }

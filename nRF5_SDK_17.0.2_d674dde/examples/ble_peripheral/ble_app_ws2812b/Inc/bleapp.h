@@ -34,5 +34,7 @@
 // Exported types *************************************************************
 
 // Exported functions *********************************************************
-void bleapp_init                    ( void );
+void                    bleapp_init          ( void );
+uint16_t*               bleapp_getConnHandle ( void );
+ble_ws2812b_service_t*  bleapp_getServiceObj ( void );
 #endif // __BLEAPP_H

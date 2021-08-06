@@ -42,7 +42,6 @@
 // Private types     **********************************************************
 
 // Private variables **********************************************************
-static uint8_t blePicBuffer[MAX_BLE_SIZE];
 
 // Private function prototypes ************************************************
 static void on_write( ble_ws2812b_service_t * p_lbs, ble_evt_t const * p_ble_evt );
@@ -263,6 +262,39 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
       return err_code;
    }
 
+   // Add page 1 characteristic.
+   memset(&add_char_params, 0, sizeof(add_char_params));
+   add_char_params.uuid                = UUID_WS2812B_PAGE1_CHAR;
+   add_char_params.uuid_type           = p_lbs->uuid_type;
+   add_char_params.init_len            = MAX_PAGE_SIZE;
+   add_char_params.max_len             = MAX_PAGE_SIZE;
+   add_char_params.char_props.read     = 1;
+   add_char_params.char_props.write    = 1;
+   
+   add_char_params.read_access         = SEC_OPEN;
+   add_char_params.write_access        = SEC_OPEN;
+   
+   err_code = characteristic_add(p_lbs->service_handle, &add_char_params, &p_lbs->page1_char_handles);
+   
+   if (err_code != NRF_SUCCESS)
+   {
+      return err_code;
+   }
+   
+   // Add page 2 characteristic.
+   memset(&add_char_params, 0, sizeof(add_char_params));
+   add_char_params.uuid                = UUID_WS2812B_PAGE2_CHAR;
+   add_char_params.uuid_type           = p_lbs->uuid_type;
+   add_char_params.init_len            = 165;
+   add_char_params.max_len             = 165;
+   add_char_params.char_props.read     = 1;
+   add_char_params.char_props.write    = 1;
+   
+   add_char_params.read_access         = SEC_OPEN;
+   add_char_params.write_access        = SEC_OPEN;
+   
+   err_code = characteristic_add(p_lbs->service_handle, &add_char_params, &p_lbs->page2_char_handles);
+   
    if (err_code != NRF_SUCCESS)
    {
       return err_code;
@@ -280,7 +312,7 @@ uint32_t bleapp_services_ws2812b( ble_ws2812b_service_t * p_lbs )
 /// \param     [in] uint16_t len
 ///
 /// \return    err_code
-uint32_t bleapp_services_setCharNotify( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len )
+uint32_t bleapp_services_setCharNotify( uint16_t* conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len )
 {
     ble_gatts_hvx_params_t params;
 
@@ -290,7 +322,7 @@ uint32_t bleapp_services_setCharNotify( uint16_t conn_handle, uint16_t value_han
     params.p_data = data;
     params.p_len  = &len;
 
-    return sd_ble_gatts_hvx(conn_handle, &params);
+    return sd_ble_gatts_hvx(*conn_handle, &params);
 }
 
 // ----------------------------------------------------------------------------
@@ -302,7 +334,7 @@ uint32_t bleapp_services_setCharNotify( uint16_t conn_handle, uint16_t value_han
 /// \param     [in] uint16_t len
 ///
 /// \return    err_code
-uint32_t bleapp_services_setCharIndication( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len )
+uint32_t bleapp_services_setCharIndication( uint16_t* conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len )
 {
     ble_gatts_hvx_params_t params;
 
@@ -312,7 +344,7 @@ uint32_t bleapp_services_setCharIndication( uint16_t conn_handle, uint16_t value
     params.p_data = data;
     params.p_len  = &len;
 
-    return sd_ble_gatts_hvx(conn_handle, &params);
+    return sd_ble_gatts_hvx(*conn_handle, &params);
 }
 
 // ----------------------------------------------------------------------------
@@ -322,18 +354,19 @@ uint32_t bleapp_services_setCharIndication( uint16_t conn_handle, uint16_t value
 /// \param     [in] uint16_t value_handle
 /// \param     [in] uint8_t* data
 /// \param     [in] uint16_t len
+/// \param     [in] uint16_t offset
 ///
 /// \return    err_code
-uint32_t bleapp_services_setChar( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len )
+uint32_t bleapp_services_setChar( uint16_t* conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len, uint16_t offset )
 {
     ble_gatts_value_t params;
 
     memset(&params, 0, sizeof(params));
     params.len   = len;
-    params.offset = 0;
+    params.offset = offset;
     params.p_value = data;
 
-    return sd_ble_gatts_value_set(conn_handle, value_handle, &params);
+    return sd_ble_gatts_value_set(*conn_handle, value_handle, &params);
 }
 
 // ----------------------------------------------------------------------------
@@ -345,11 +378,11 @@ uint32_t bleapp_services_setChar( uint16_t conn_handle, uint16_t value_handle, u
 /// \param     [in]  uint16_t row
 ///
 /// \return    none
-void bleapp_services_setResolution( uint16_t conn_handle, ble_ws2812b_service_t m_ws2812bService, uint16_t col, uint16_t row )
+void bleapp_services_setResolution( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint16_t col, uint16_t row )
 {
    ret_code_t err_code;
    
-   err_code = bleapp_services_setChar( conn_handle, m_ws2812bService.col_char_handles.value_handle, (uint8_t*)&col, sizeof(uint16_t) );
+   err_code = bleapp_services_setChar( conn_handle, m_ws2812bService->col_char_handles.value_handle, (uint8_t*)&col, sizeof(uint16_t), 0 );
    if (err_code != NRF_SUCCESS &&
       err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
       err_code != NRF_ERROR_INVALID_STATE &&
@@ -358,7 +391,7 @@ void bleapp_services_setResolution( uint16_t conn_handle, ble_ws2812b_service_t 
       APP_ERROR_CHECK(err_code);
    }
    
-   err_code = bleapp_services_setChar( conn_handle, m_ws2812bService.row_char_handles.value_handle, (uint8_t*)&row, sizeof(uint16_t) );
+   err_code = bleapp_services_setChar( conn_handle, m_ws2812bService->row_char_handles.value_handle, (uint8_t*)&row, sizeof(uint16_t), 0 );
    if (err_code != NRF_SUCCESS &&
       err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
       err_code != NRF_ERROR_INVALID_STATE &&
@@ -375,13 +408,13 @@ void bleapp_services_setResolution( uint16_t conn_handle, ble_ws2812b_service_t 
 /// \param     [in]  length
 ///
 /// \return    none
-void bleapp_services_setFrame( uint16_t conn_handle, ble_ws2812b_service_t m_ws2812bService, uint8_t* buffer, uint16_t length )
+void bleapp_services_setFrame( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint8_t* buffer, uint16_t length )
 {
    ret_code_t err_code;
    
-   if( conn_handle != BLE_CONN_HANDLE_INVALID )
+   if( *conn_handle != BLE_CONN_HANDLE_INVALID )
    {
-      err_code = bleapp_services_setCharNotify( conn_handle, m_ws2812bService.picture_char_handles.value_handle, (uint8_t*)&buffer, length );
+      err_code = bleapp_services_setCharNotify( conn_handle, m_ws2812bService->picture_char_handles.value_handle, (uint8_t*)&buffer, length );
       if (err_code != NRF_SUCCESS &&
          err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
          err_code != NRF_ERROR_INVALID_STATE &&
@@ -389,5 +422,44 @@ void bleapp_services_setFrame( uint16_t conn_handle, ble_ws2812b_service_t m_ws2
       {
          APP_ERROR_CHECK(err_code);
       }
+   }
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Set resolution on ble service
+///
+/// \param     [in]  uint16_t conn_handle
+/// \param     [in]  ble_ws2812b_service_t m_ws2812bService
+/// \param     [in]  uint16_t pixel number
+/// \param     [in]  uint16_t row
+///
+/// \return    none
+void bleapp_services_setPagePixel( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint16_t pixel_pos, uint8_t red, uint8_t green, uint8_t blue )
+{
+   ret_code_t err_code;
+   uint16_t value_handle;
+   uint8_t rgb[3];
+   rgb[0] = red;
+   rgb[1] = green;
+   rgb[2] = blue;
+   
+   if( 3*pixel_pos < MAX_PAGE_SIZE )
+   {
+      value_handle = m_ws2812bService->page1_char_handles.value_handle;
+   }
+   else
+   {
+      value_handle = m_ws2812bService->page2_char_handles.value_handle;
+      pixel_pos -= MAX_PAGE_SIZE/3;
+   }
+   
+   err_code = bleapp_services_setChar( conn_handle, value_handle, rgb, 3u, 3u*pixel_pos );
+   
+   if (err_code != NRF_SUCCESS &&
+      err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+      err_code != NRF_ERROR_INVALID_STATE &&
+      err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+   {
+      APP_ERROR_CHECK(err_code);
    }
 }

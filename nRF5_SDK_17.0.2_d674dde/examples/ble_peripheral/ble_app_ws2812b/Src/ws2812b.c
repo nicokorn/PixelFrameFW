@@ -198,6 +198,7 @@ void WS2812B_setPixel(  WS2812B_HandleTypeDef_t *ws2812b_instance, uint16_t pixe
     return;
   }
   
+  // parse pixel/rbg data into pwm data
   for( uint8_t i=0; i<8; i++)
   {
     if( (0x80 & (red<<i)) == 0x80 )

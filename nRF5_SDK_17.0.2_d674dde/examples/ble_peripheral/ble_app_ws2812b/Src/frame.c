@@ -88,6 +88,8 @@ void frame_init( Frame_HandleTypeDef_t *frame_instance )
    if( frame_core->bleServices == true )
    {
       bleapp_init();
+      frame_core->bleConnHandle = bleapp_getConnHandle();
+      frame_core->bleServicesObj = bleapp_getServiceObj();
    }
 }
 
@@ -110,7 +112,13 @@ void frame_sendBuffer( void )
 /// \return    none
 void frame_clearBuffer( void )
 {
-   WS2812B_clearBuffer( frame_core->ws2812b );
+   for( uint16_t y=0; y<frame_core->rows; y++ )
+   {
+      for( uint16_t x=0; x<frame_core->cols; x++ )
+      {
+         frame_setPixel( x, y, 0x00, 0x00, 0x00 );
+      }
+   }
 }
 
 // ----------------------------------------------------------------------------
@@ -147,6 +155,12 @@ void frame_setPixel( uint16_t col, uint16_t row, uint8_t red, uint8_t green, uin
    
    // set the pixel in the ws2812b pixel buffer
    WS2812B_setPixel( frame_core->ws2812b, pixelnumber, red, green, blue );
+   
+  // if ble service has been loaded write pixel data also into the service
+  if( frame_core->bleServices != false )
+  {
+     bleapp_services_setPagePixel( frame_core->bleConnHandle, frame_core->bleServicesObj, (row*frame_core->cols) + col, red, green, blue );
+  }
 }
 
 // ----------------------------------------------------------------------------

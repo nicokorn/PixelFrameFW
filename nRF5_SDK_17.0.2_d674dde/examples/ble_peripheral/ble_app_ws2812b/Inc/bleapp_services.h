@@ -56,13 +56,15 @@ NRF_SDH_BLE_OBSERVER(_name ## _obs,                \
 #define UUID_WS2812B_COL_CHAR       0x1004
 #define UUID_WS2812B_PIXEL_CHAR     0x1005
 #define UUID_WS2812B_PICTURE_CHAR   0x1006
+#define UUID_WS2812B_PAGE1_CHAR     0x1010
+#define UUID_WS2812B_PAGE2_CHAR     0x1011
 
 #define UUID_UC_SERVICE             0x2001
 #define UUID_UC_VOLTAGE_CHAR        0x2002
 #define UUID_UC_TEMPERATURE_CHAR    0x2003
 
 #define PICTURE_HEADER_OFFSET       5u
-#define MAX_BLE_SIZE                512u
+#define MAX_PAGE_SIZE               510u
 
 #define CMD_BIT_REFRESH            0x01u
 #define CMD_BIT_CLEARALL           0x02u
@@ -84,6 +86,8 @@ struct ble_ws2812b_service_s
    ble_gatts_char_handles_t      col_char_handles;       /**< Handles related to column Characteristic. */
    ble_gatts_char_handles_t      pixel_char_handles;     /**< Handles related to column Characteristic. */
    ble_gatts_char_handles_t      picture_char_handles;   /**< Handles related to data Characteristic. */
+   ble_gatts_char_handles_t      page1_char_handles;     /**< Handles related to data Characteristic. */
+   ble_gatts_char_handles_t      page2_char_handles;     /**< Handles related to data Characteristic. */
    uint8_t                       uuid_type;              /**< UUID type for the ws2812b controller Service. */
 };
 
@@ -118,13 +122,14 @@ void bleapp_services_ws2812b_evt( ble_evt_t const * p_ble_evt, void * p_context 
  *
  * @retval NRF_SUCCESS If the notification was sent successfully. Otherwise, an error code is returned.
  */
-uint32_t bleapp_services_on_button_change       ( uint16_t conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t button_state );
-uint32_t bleapp_services_setCharNotify          ( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
-uint32_t bleapp_services_setCharIndication      ( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
-uint32_t bleapp_services_setChar                ( uint16_t conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
+uint32_t bleapp_services_on_button_change       ( uint16_t* conn_handle, ble_ws2812b_service_t * p_lbs, uint8_t button_state );
+uint32_t bleapp_services_setCharNotify          ( uint16_t* conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
+uint32_t bleapp_services_setCharIndication      ( uint16_t* conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len );
+uint32_t bleapp_services_setChar                ( uint16_t* conn_handle, uint16_t value_handle, uint8_t* data, uint16_t len, uint16_t offset );
 void     on_char_picture                        ( const uint8_t *dPointer );
 void     on_char_pixel                          ( const uint8_t *dPointer );
-void     bleapp_services_setResolution          ( uint16_t conn_handle, ble_ws2812b_service_t m_ws2812bService, uint16_t col, uint16_t row );
-void     bleapp_services_setFrame               ( uint16_t conn_handle, ble_ws2812b_service_t m_ws2812bService, uint8_t* buffer, uint16_t length );
+void     bleapp_services_setResolution          ( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint16_t col, uint16_t row );
+void     bleapp_services_setFrame               ( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint8_t* buffer, uint16_t length );
+void     bleapp_services_setPagePixel           ( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint16_t pixel_pos, uint8_t red, uint8_t green, uint8_t blue );
 
 #endif // __BLEAPP_SERVICES_H
