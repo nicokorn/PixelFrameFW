@@ -1004,7 +1004,7 @@ void nrf_log_panic(void)
 
 #if NRF_MODULE_ENABLED(LOG_CONFIG_LOAD_STORE)
 #include "fds.h"
-#define LOG_CONFIG_FILE_ID   0x106E
+#define LOG_PICTURE_FILE_ID   0x106E
 #define LOG_CONFIG_RECORD_ID 0x3427
 
 ret_code_t nrf_log_config_store(void)
@@ -1012,14 +1012,14 @@ ret_code_t nrf_log_config_store(void)
     fds_record_desc_t desc = {0};
     fds_find_token_t  token = {0};
     fds_record_t      record = {
-            .file_id = LOG_CONFIG_FILE_ID,
+            .file_id = LOG_PICTURE_FILE_ID,
             .key     = LOG_CONFIG_RECORD_ID,
             .data = {
                     .p_data       = NRF_LOG_FILTER_SECTION_VARS_GET(0),
                     .length_words = NRF_SECTION_LENGTH(log_filter_data)/sizeof(uint32_t)
             }
     };
-    ret_code_t ret = fds_record_find(LOG_CONFIG_FILE_ID, LOG_CONFIG_RECORD_ID, &desc, &token);
+    ret_code_t ret = fds_record_find(LOG_PICTURE_FILE_ID, LOG_CONFIG_RECORD_ID, &desc, &token);
     if (ret == NRF_SUCCESS)
     {
         ret = fds_record_update(&desc, &record);
@@ -1042,7 +1042,7 @@ ret_code_t nrf_log_config_load(void)
     fds_record_desc_t desc = {0};
     fds_find_token_t  token = {0};
 
-    ret_code_t ret = fds_record_find(LOG_CONFIG_FILE_ID, LOG_CONFIG_RECORD_ID, &desc, &token);
+    ret_code_t ret = fds_record_find(LOG_PICTURE_FILE_ID, LOG_CONFIG_RECORD_ID, &desc, &token);
     if (ret == NRF_SUCCESS)
     {
         fds_flash_record_t record = {0};

@@ -66,8 +66,8 @@ NRF_SDH_BLE_OBSERVER(_name ## _obs,                \
 #define PICTURE_HEADER_OFFSET       5u
 #define MAX_PAGE_SIZE               510u
 
-#define CMD_BIT_REFRESH            0x01u
-#define CMD_BIT_CLEARALL           0x02u
+#define CMD_BIT_REFRESH             0x01u
+#define CMD_BIT_CLEARALL            0x02u
 
 // Exported types *************************************************************
 
@@ -131,5 +131,5 @@ void     on_char_pixel                          ( const uint8_t *dPointer );
 void     bleapp_services_setResolution          ( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint16_t col, uint16_t row );
 void     bleapp_services_setFrame               ( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint8_t* buffer, uint16_t length );
 void     bleapp_services_setPagePixel           ( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint16_t pixel_pos, uint8_t red, uint8_t green, uint8_t blue );
-
+void     bleapp_services_getPicture             ( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint8_t* picture, uint16_t length );
 #endif // __BLEAPP_SERVICES_H

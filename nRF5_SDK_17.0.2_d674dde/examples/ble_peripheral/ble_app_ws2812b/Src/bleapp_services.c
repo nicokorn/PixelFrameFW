@@ -122,6 +122,8 @@ void on_char_picture( const uint8_t *dPointer )
       }
    }
    
+   frame_storePicture();
+   
    // command field parsing
    if( (cmd & CMD_BIT_REFRESH) == CMD_BIT_REFRESH )
    {
@@ -455,6 +457,49 @@ void bleapp_services_setPagePixel( uint16_t* conn_handle, ble_ws2812b_service_t*
    
    err_code = bleapp_services_setChar( conn_handle, value_handle, rgb, 3u, 3u*pixel_pos );
    
+   if (err_code != NRF_SUCCESS &&
+      err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+      err_code != NRF_ERROR_INVALID_STATE &&
+      err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+   {
+      APP_ERROR_CHECK(err_code);
+   }
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Set resolution on ble service
+///
+/// \param     [in]  uint16_t conn_handle
+/// \param     [in]  ble_ws2812b_service_t m_ws2812bService
+/// \param     [in]  uint8_t* picture
+/// \param     [in]  uint16_t length
+///
+/// \return    none
+void bleapp_services_getPicture( uint16_t* conn_handle, ble_ws2812b_service_t* m_ws2812bService, uint8_t* picture, uint16_t length )
+{
+   ret_code_t err_code;
+   ble_gatts_value_t params;
+
+   // first page
+   memset(&params, 0, sizeof(params));
+   params.len     = MAX_PAGE_SIZE;
+   params.offset  = 0;
+   params.p_value = picture;
+   err_code = sd_ble_gatts_value_get(*conn_handle, m_ws2812bService->page1_char_handles.value_handle, &params);
+   if (err_code != NRF_SUCCESS &&
+      err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+      err_code != NRF_ERROR_INVALID_STATE &&
+      err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+   {
+      APP_ERROR_CHECK(err_code);
+   }
+   
+   // second page
+   memset(&params, 0, sizeof(params));
+   params.len     = length-MAX_PAGE_SIZE;
+   params.offset  = 0;
+   params.p_value = picture+MAX_PAGE_SIZE;
+   err_code = sd_ble_gatts_value_get(*conn_handle, m_ws2812bService->page2_char_handles.value_handle, &params);
    if (err_code != NRF_SUCCESS &&
       err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
       err_code != NRF_ERROR_INVALID_STATE &&

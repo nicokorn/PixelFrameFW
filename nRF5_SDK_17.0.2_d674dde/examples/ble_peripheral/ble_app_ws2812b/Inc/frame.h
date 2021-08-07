@@ -52,6 +52,8 @@
 #include "bleapp_services.h"
 
 // Exported defines ***********************************************************
+#define ROWS   15
+#define COLS   15
 
 // Exported types *************************************************************
 typedef struct Frame_HandleTypeDef_s
@@ -75,4 +77,6 @@ uint16_t frame_getColCount    ( void );
 uint8_t* frame_getBuffer      ( void );
 void     frame_task           ( void );
 void     frame_reqSendBuffer  ( void );
+void     frame_loadPicture    ( void );
+void     frame_storePicture   ( void );
 #endif // __FRAME_H__FRAME_H

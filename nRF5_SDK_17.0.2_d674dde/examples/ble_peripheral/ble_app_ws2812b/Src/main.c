@@ -53,8 +53,6 @@
 #include "nrf_delay.h"
 
 // Private define *************************************************************
-#define ROWS   15
-#define COLS   15
 
 // Private types     **********************************************************
 
@@ -73,8 +71,6 @@
 /// \return    none
 int main(void)
 {
-   bool erase_bonds;
-
    // ws21812b init
    WS2812B_HandleTypeDef_t ws2812b;
    ws2812b.pixelcount = ROWS*COLS;
@@ -88,9 +84,8 @@ int main(void)
    frame.bleServices = true;
    frame_init( &frame );
 
-   // reset buffer
-   frame_clearBuffer();
-   frame_sendBuffer();
+   // load picture if any available in the flash
+   frame_loadPicture();
    
    // Enter main loop.
    for (;;)

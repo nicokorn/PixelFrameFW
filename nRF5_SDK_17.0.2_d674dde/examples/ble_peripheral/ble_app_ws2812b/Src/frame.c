@@ -50,6 +50,7 @@
 #include "nrf_gpio.h"
 #include "bleapp.h"
 #include "ws2812b.h"
+#include "storage.h"
 
 
 // Private define *************************************************************
@@ -91,6 +92,9 @@ void frame_init( Frame_HandleTypeDef_t *frame_instance )
       frame_core->bleConnHandle = bleapp_getConnHandle();
       frame_core->bleServicesObj = bleapp_getServiceObj();
    }
+   
+   // initialise the fds module
+   storage_init();
 }
 
 // ----------------------------------------------------------------------------
@@ -119,6 +123,7 @@ void frame_clearBuffer( void )
          frame_setPixel( x, y, 0x00, 0x00, 0x00 );
       }
    }
+   frame_storePicture();
 }
 
 // ----------------------------------------------------------------------------
@@ -222,4 +227,58 @@ void frame_task( void )
 void frame_reqSendBuffer( void )
 {
    frame_core->sendBuffer = true;
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Checks internal flash storage for stored pictures for last
+///            boot cycles.
+///
+/// \param     none
+///
+/// \return    none
+void frame_loadPicture( void )
+{
+   uint8_t buffer[ROWS*COLS*3];
+   uint16_t counter = 0;
+   if( storage_loadPicture( buffer, ROWS*COLS*3 ) != STORAGE_ERROR )
+   {
+      for( uint16_t y=0; y<frame_core->rows; y++ )
+      {
+         for( uint16_t x=0; x<frame_core->cols; x++ )
+         {
+            frame_setPixel( x, y, buffer[counter], buffer[counter+1], buffer[counter+2] );
+            counter += 3;
+            if( counter > ROWS*COLS*3 )
+            {
+               frame_clearBuffer();
+               frame_reqSendBuffer();
+               return;
+            }
+         }
+      }
+   }
+   else
+   {
+      frame_clearBuffer();
+      frame_reqSendBuffer();
+   }
+   frame_reqSendBuffer();
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Stores current picture on the frame into the internal flash
+///
+/// \param     none
+///
+/// \return    none
+void frame_storePicture( void )
+{
+   uint8_t buffer[ROWS*COLS*3];
+   uint8_t counter = 0;
+   
+   // get the picture stored in the ble service
+   bleapp_services_getPicture( frame_core->bleConnHandle, frame_core->bleServicesObj, buffer, ROWS*COLS*3 );
+   
+   // store the picture into internal flash
+   storage_storePicture( buffer, ROWS*COLS*3 );
 }
