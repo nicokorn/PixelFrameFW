@@ -67,6 +67,16 @@ typedef struct Frame_HandleTypeDef_s
    ble_ws2812b_service_t*     bleServicesObj;   
 }Frame_HandleTypeDef_t;
 
+typedef struct Frame_Pixel_s
+{
+   int16_t                    x;
+   int16_t                    y;
+   uint8_t                    l;
+   uint8_t                    r;
+   uint8_t                    g;
+   uint8_t                    b;
+}Frame_Pixel_t;
+
 // Exported functions *********************************************************
 void     frame_init           ( Frame_HandleTypeDef_t *frame_instance );
 void     frame_sendBuffer     ( void );
@@ -79,4 +89,6 @@ void     frame_task           ( void );
 void     frame_reqSendBuffer  ( void );
 void     frame_loadPicture    ( void );
 void     frame_storePicture   ( void );
+void     frame_splashScreen   ( void );
+void     frame_loadScreen     ( void );
 #endif // __FRAME_H__FRAME_H

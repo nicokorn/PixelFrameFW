@@ -365,14 +365,7 @@ Storage_StatusTypeDef storage_storePicture( uint8_t* picture, uint16_t length )
       
       /* Write the updated record to flash. */
       rc = fds_record_update(&desc, &m_picure_record);
-      if ((rc != NRF_SUCCESS) && (rc == FDS_ERR_NO_SPACE_IN_FLASH))
-      {
-         //No space in flash, delete some records to update the config file
-      }
-      else
-      {
-         APP_ERROR_CHECK(rc);
-      }
+      APP_ERROR_CHECK(rc);
    }
    else
    {
@@ -380,15 +373,7 @@ Storage_StatusTypeDef storage_storePicture( uint8_t* picture, uint16_t length )
       memcpy(pictureObj.data, picture, length);
       pictureObj.length = length;
       rc = fds_record_write(&desc, &m_picure_record);
-      if ((rc != NRF_SUCCESS) && (rc == FDS_ERR_NO_SPACE_IN_FLASH))
-      {
-         // No space in flash, delete some records to update the config file
-      }
-      else
-      {
-         APP_ERROR_CHECK(rc);
-         return STORAGE_ERROR;
-      }
+      APP_ERROR_CHECK(rc);
    }
    return STORAGE_OK;
 }

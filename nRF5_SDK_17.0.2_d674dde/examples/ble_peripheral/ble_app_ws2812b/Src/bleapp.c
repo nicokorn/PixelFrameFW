@@ -77,7 +77,7 @@
 #include "nrf_log_default_backends.h"
 
 
-#define DEVICE_NAME                     "WS2812B_Controller"                    /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "FrameController"                       /**< Name of device. Will be included in the advertising data. */
 #define MANUFACTURER_NAME               "Nico"                                  /**< Manufacturer. Will be passed to Device Information Service. */
 #define APP_ADV_INTERVAL                300                                     /**< The advertising interval (in units of 0.625 ms. This value corresponds to 187.5 ms). */
 

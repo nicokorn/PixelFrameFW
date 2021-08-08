@@ -83,6 +83,9 @@ int main(void)
    frame.ws2812b     = &ws2812b;
    frame.bleServices = true;
    frame_init( &frame );
+   
+   // show splashscreen
+   frame_splashScreen();
 
    // load picture if any available in the flash
    frame_loadPicture();

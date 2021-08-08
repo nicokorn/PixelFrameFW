@@ -44,6 +44,8 @@
 // Include ********************************************************************
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <nrf_delay.h>
 #include "frame.h"
 #include "nrf_drv_pwm.h"
 #include "nrf_delay.h"
@@ -54,13 +56,80 @@
 
 
 // Private define *************************************************************
+#define loadScreenSIZE 63u
 
 // Private types     **********************************************************
 
 // Private variables **********************************************************
-static Frame_HandleTypeDef_t     *frame_core;
+static Frame_HandleTypeDef_t *frame_core;
+static const Frame_Pixel_t loadScreen[loadScreenSIZE] = {  // x,y,l,r,g,b
+{ .x= 0, .y= 1, .l= 0, .r= 0, .g= 0, .b= 0 }, // L
+{ .x= 0, .y= 2, .l= 0, .r= 0, .g= 0, .b= 0 }, // L 
+{ .x= 0, .y= 3, .l= 0, .r= 0, .g= 0, .b= 0 }, // L
+{ .x= 0, .y= 4, .l= 0, .r= 0, .g= 0, .b= 0 }, // L
+{ .x= 1, .y= 4, .l= 0, .r= 0, .g= 0, .b= 0 }, // L
+{ .x= 2, .y= 4, .l= 0, .r= 0, .g= 0, .b= 0 }, // L
+{ .x= 4, .y= 1, .l= 0, .r= 0, .g= 0, .b= 0 }, // O
+{ .x= 4, .y= 2, .l= 0, .r= 0, .g= 0, .b= 0 }, // O
+{ .x= 4, .y= 3, .l= 0, .r= 0, .g= 0, .b= 0 }, // O
+{ .x= 4, .y= 4, .l= 0, .r= 0, .g= 0, .b= 0 }, // O
+{ .x= 5, .y= 1, .l= 0, .r= 0, .g= 0, .b= 0 }, // O
+{ .x= 5, .y= 4, .l= 0, .r= 0, .g= 0, .b= 0 }, // O
+{ .x= 6, .y= 1, .l= 0, .r= 0, .g= 0, .b= 0 }, // O
+{ .x= 6, .y= 2, .l= 0, .r= 0, .g= 0, .b= 0 }, // O
+{ .x= 6, .y= 3, .l= 0, .r= 0, .g= 0, .b= 0 }, // O
+{ .x= 6, .y= 4, .l= 0, .r= 0, .g= 0, .b= 0 }, // O
+{ .x= 8, .y= 1, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 8, .y= 2, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 8, .y= 3, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 8, .y= 4, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 9, .y= 1, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 9, .y= 3, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x=10, .y= 1, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x=10, .y= 2, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x=10, .y= 3, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x=10, .y= 4, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x=12, .y= 1, .l= 0, .r= 0, .g= 0, .b= 0 }, // D
+{ .x=12, .y= 2, .l= 0, .r= 0, .g= 0, .b= 0 }, // D
+{ .x=12, .y= 3, .l= 0, .r= 0, .g= 0, .b= 0 }, // D
+{ .x=12, .y= 4, .l= 0, .r= 0, .g= 0, .b= 0 }, // D
+{ .x=13, .y= 1, .l= 0, .r= 0, .g= 0, .b= 0 }, // D
+{ .x=13, .y= 4, .l= 0, .r= 0, .g= 0, .b= 0 }, // D
+{ .x=14, .y= 2, .l= 0, .r= 0, .g= 0, .b= 0 }, // D
+{ .x=14, .y= 3, .l= 0, .r= 0, .g= 0, .b= 0 }, // D
+{ .x= 6, .y= 6, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 6, .y= 7, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 6, .y= 8, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 6, .y= 9, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 7, .y= 6, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 7, .y= 8, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 8, .y= 6, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 8, .y= 7, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 8, .y= 8, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 8, .y= 9, .l= 0, .r= 0, .g= 0, .b= 0 }, // A
+{ .x= 3, .y=11, .l= 0, .r= 0, .g= 0, .b= 0 }, // P
+{ .x= 3, .y=12, .l= 0, .r= 0, .g= 0, .b= 0 }, // P
+{ .x= 3, .y=13, .l= 0, .r= 0, .g= 0, .b= 0 }, // P
+{ .x= 3, .y=14, .l= 0, .r= 0, .g= 0, .b= 0 }, // P
+{ .x= 4, .y=11, .l= 0, .r= 0, .g= 0, .b= 0 }, // P
+{ .x= 4, .y=13, .l= 0, .r= 0, .g= 0, .b= 0 }, // P
+{ .x= 5, .y=12, .l= 0, .r= 0, .g= 0, .b= 0 }, // P
+{ .x= 7, .y=11, .l= 0, .r= 0, .g= 0, .b= 0 }, // I
+{ .x= 7, .y=12, .l= 0, .r= 0, .g= 0, .b= 0 }, // I
+{ .x= 7, .y=13, .l= 0, .r= 0, .g= 0, .b= 0 }, // I
+{ .x= 7, .y=14, .l= 0, .r= 0, .g= 0, .b= 0 }, // I
+{ .x= 9, .y=11, .l= 0, .r= 0, .g= 0, .b= 0 }, // C
+{ .x= 9, .y=12, .l= 0, .r= 0, .g= 0, .b= 0 }, // C
+{ .x= 9, .y=13, .l= 0, .r= 0, .g= 0, .b= 0 }, // C
+{ .x= 9, .y=14, .l= 0, .r= 0, .g= 0, .b= 0 }, // C
+{ .x=10, .y=11, .l= 0, .r= 0, .g= 0, .b= 0 }, // C
+{ .x=10, .y=14, .l= 0, .r= 0, .g= 0, .b= 0 }, // C
+{ .x=11, .y=11, .l= 0, .r= 0, .g= 0, .b= 0 }, // C
+{ .x=11, .y=14, .l= 0, .r= 0, .g= 0, .b= 0 }  // C
+};
 
 // Private function prototypes ************************************************
+static void frame_colorWheelPlus( uint8_t *red, uint8_t *green, uint8_t *blue );
 
 // Global variables ***********************************************************
 
@@ -123,7 +192,7 @@ void frame_clearBuffer( void )
          frame_setPixel( x, y, 0x00, 0x00, 0x00 );
       }
    }
-   frame_storePicture();
+   //frame_storePicture();
 }
 
 // ----------------------------------------------------------------------------
@@ -281,4 +350,96 @@ void frame_storePicture( void )
    
    // store the picture into internal flash
    storage_storePicture( buffer, ROWS*COLS*3 );
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Splashscreen used on startup
+///
+/// \param     none
+///
+/// \return    none
+void frame_splashScreen( void )
+{
+   // init intro drops
+#define DROPS 30
+#define FRAMES 75
+   Frame_Pixel_t dropArray[DROPS];
+   for( uint8_t dropnr = 0; dropnr < DROPS; dropnr++ )
+   {
+      dropArray[dropnr].x = (rand()%frame_core->cols);
+      dropArray[dropnr].y = (rand()%frame_core->rows) * -1;
+      dropArray[dropnr].r = 0;
+      dropArray[dropnr].g = (rand()%200) + 10;
+      dropArray[dropnr].b = 0;
+      dropArray[dropnr].l = rand()%5 + 10;
+   }
+   
+   for( uint16_t frame=0; frame<FRAMES; frame++ )
+   {
+      frame_clearBuffer();
+      for( uint8_t dropnr = 0; dropnr < DROPS; dropnr++ )
+      {
+         if( dropArray[dropnr].y >= 0 && dropArray[dropnr].y < 15 )
+         {
+            frame_setPixel( dropArray[dropnr].x, dropArray[dropnr].y, dropArray[dropnr].r, dropArray[dropnr].g, dropArray[dropnr].b );
+         }
+         dropArray[dropnr].y++;
+         if( dropArray[dropnr].y == frame_core->rows && frame < FRAMES-2*frame_core->rows )
+         {
+            dropArray[dropnr].x = (rand()%frame_core->cols);
+            dropArray[dropnr].y = (rand()%frame_core->rows) * -1;
+            dropArray[dropnr].r = 0;
+            dropArray[dropnr].g = (rand()%200) + 10;
+            dropArray[dropnr].b = 0;
+            //dropArray[dropnr].l = rand()%5 + 10;
+         }
+      }
+      frame_sendBuffer();
+      nrf_delay_ms(5); 
+   }
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     If flash is empty show the load a pic screen.
+///
+/// \param     none
+///
+/// \return    none
+void frame_loadScreen( void )
+{
+   uint8_t r = 0x50;
+   uint8_t g = 0x00;
+   uint8_t b = 0x00;
+   
+   for( uint8_t pixelnr = 0; pixelnr<loadScreenSIZE; pixelnr++ )
+   {
+      frame_colorWheelPlus(&r,&g,&b);
+      frame_setPixel( loadScreen[pixelnr].x, loadScreen[pixelnr].y, r>>1, g>>1, b>>1 );
+   }
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Incremens the given color.
+///
+/// \param     [in]  uint8_t *red
+/// \param     [in]  uint8_t *green
+/// \param     [in]  uint8_t *blue
+///
+/// \return    none
+static void frame_colorWheelPlus( uint8_t *red, uint8_t *green, uint8_t *blue )
+{
+	//set next colors
+	if(*green == 0x00 && *red < 0xff){
+		*red += 0x02;
+		*green = 0x00;
+		*blue -= 0x02;
+	}else if(*green < 0xff && *blue == 0x00){
+		*red -= 0x02;
+		*green += 0x02;
+		*blue = 0x00;
+	}else if(*red == 0x00 && *blue < 0xff){
+		*red = 0x00;
+		*green -= 0x02;
+		*blue += 0x02;
+	}
 }
