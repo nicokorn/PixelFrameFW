@@ -293,6 +293,13 @@ Storage_StatusTypeDef storage_loadPicture( uint8_t* picture, uint16_t length )
    rc = fds_stat(&stat);
    APP_ERROR_CHECK(rc);
    
+   // garbage collection if there are dirty records
+   if( stat.dirty_records > 10 )
+   {
+      rc = fds_gc();
+      APP_ERROR_CHECK(rc);
+   }
+   
    fds_record_desc_t desc = {0};
    fds_find_token_t  tok  = {0};
    
@@ -347,6 +354,13 @@ Storage_StatusTypeDef storage_storePicture( uint8_t* picture, uint16_t length )
    rc = fds_stat(&stat);
    APP_ERROR_CHECK(rc);
    
+   // garbage collection if there are dirty records
+   if( stat.dirty_records > 10 )
+   {
+      rc = fds_gc();
+      APP_ERROR_CHECK(rc);
+   }
+   
    fds_record_desc_t desc = {0};
    fds_find_token_t  tok  = {0};
    
@@ -378,7 +392,7 @@ Storage_StatusTypeDef storage_storePicture( uint8_t* picture, uint16_t length )
       // check if flash is full, if so erase flash
       if( rc == FDS_ERR_NO_SPACE_IN_FLASH )
       {
-         
+          
       }
       APP_ERROR_CHECK(rc);
    }

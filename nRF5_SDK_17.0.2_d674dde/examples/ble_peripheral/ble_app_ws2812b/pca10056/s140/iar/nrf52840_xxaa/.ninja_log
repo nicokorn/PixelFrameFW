@@ -239,3 +239,6 @@
 11718	12868	6502914577307386	D:/GitHub/NRF52840_WS2812B_BLE/nRF5_SDK_17.0.2_d674dde/examples/ble_peripheral/ble_app_ws2812b/pca10056/s140/iar/_build/nRF_Log/nrf_log_default_backends.o	77af99493be427e2
 13001	13242	6502914580842212	D:/GitHub/NRF52840_WS2812B_BLE/nRF5_SDK_17.0.2_d674dde/examples/ble_peripheral/ble_app_ws2812b/pca10056/s140/iar/_build/ble_app_template_pca10056_s140.out	1101090719af54a7
 13316	13346	6502914582176598	D:/GitHub/NRF52840_WS2812B_BLE/nRF5_SDK_17.0.2_d674dde/examples/ble_peripheral/ble_app_ws2812b/pca10056/s140/iar/_build/ble_app_template_pca10056_s140.hex	4abbba2ec9451f71
+5	406	6502923094957727	D:/GitHub/NRF52840_WS2812B_BLE/nRF5_SDK_17.0.2_d674dde/examples/ble_peripheral/ble_app_ws2812b/pca10056/s140/iar/_build/Application/Src/storage.o	107aea8db35c89d2
+563	827	6502923098990921	D:/GitHub/NRF52840_WS2812B_BLE/nRF5_SDK_17.0.2_d674dde/examples/ble_peripheral/ble_app_ws2812b/pca10056/s140/iar/_build/ble_app_template_pca10056_s140.out	1101090719af54a7
+904	935	6502923100366718	D:/GitHub/NRF52840_WS2812B_BLE/nRF5_SDK_17.0.2_d674dde/examples/ble_peripheral/ble_app_ws2812b/pca10056/s140/iar/_build/ble_app_template_pca10056_s140.hex	4abbba2ec9451f71
