@@ -352,12 +352,12 @@ void frame_storePicture( void )
 }
 
 // ----------------------------------------------------------------------------
-/// \brief     Splashscreen used on startup
+/// \brief     Matrix splashscreen used on startup
 ///
 /// \param     none
 ///
 /// \return    none
-void frame_splashScreen( void )
+void frame_splashScreenMatrix( void )
 {
    // init intro drops
 #define DROPS 30
@@ -395,6 +395,119 @@ void frame_splashScreen( void )
       }
       frame_sendBuffer();
       nrf_delay_ms(5); 
+   }
+}
+
+// ----------------------------------------------------------------------------
+/// \brief     Spiral plashscreen used on startup
+///
+/// \param     none
+///
+/// \return    none
+void frame_splashScreenSpiral( void )
+{
+   Frame_Pixel_t buffer[COLS*ROWS];
+   Frame_Pixel_t pixel;
+   uint16_t counter  = 0;
+   uint8_t xPix      = 0;
+   uint8_t yPix      = 0;
+   uint8_t rPix      = 0x01;
+   uint8_t gPix      = 0x00;
+   uint8_t bPix      = 0x00;
+   uint8_t tDelta    = 14;
+   uint8_t rDelta    = 14;
+   uint8_t bDelta    = 14;
+   uint8_t lDelta    = 14;
+   typedef enum
+   {
+      TOP = 0,
+      RIGHT,
+      BOTTOM,
+      LEFT
+   }frame_orientation_t;
+   frame_orientation_t currentOrient = TOP;
+
+   frame_clearBuffer();
+   
+   for( uint8_t y=0; y<frame_core->rows; y++ )
+   {
+      for( uint8_t x=0; x<frame_core->cols; x++ )
+      {
+         switch( currentOrient )
+         {
+            case TOP:
+               frame_colorWheelPlus(&rPix,&gPix,&bPix);
+               pixel.x = xPix++;
+               pixel.y = yPix;
+               pixel.r = rPix;
+               pixel.g = gPix;
+               pixel.b = bPix;
+               counter++;
+               if( counter == tDelta )
+               {
+                  currentOrient = RIGHT;
+                  tDelta-=2;
+                  counter = 0;
+               }
+               break;
+            case RIGHT:
+               frame_colorWheelPlus(&rPix,&gPix,&bPix);
+               pixel.x = xPix;
+               pixel.y = yPix++;
+               pixel.r = rPix;
+               pixel.g = gPix;
+               pixel.b = bPix;
+               counter++;
+               if( counter == rDelta )
+               {
+                  currentOrient = BOTTOM;
+                  rDelta-=2;
+                  counter = 0;
+               }
+               break;
+            case BOTTOM:
+               frame_colorWheelPlus(&rPix,&gPix,&bPix);
+               pixel.x = xPix--;
+               pixel.y = yPix;
+               pixel.r = rPix;
+               pixel.g = gPix;
+               pixel.b = bPix;
+               counter++;
+               if( counter == bDelta )
+               {
+                  currentOrient = LEFT;
+                  bDelta-=2;
+                  counter = 0;
+               }
+               break;
+            case LEFT:
+               frame_colorWheelPlus(&rPix,&gPix,&bPix);
+               pixel.x = xPix;
+               pixel.y = yPix--;
+               pixel.r = rPix;
+               pixel.g = gPix;
+               pixel.b = bPix;
+               counter++;
+               if( counter == lDelta )
+               {
+                  currentOrient = TOP;
+                  lDelta-=2;
+                  counter = 0;
+                  yPix++;
+                  xPix++;
+               }
+               break;
+         }
+
+         // write local buffer to frame buffer
+         frame_setPixel( pixel.x, pixel.y, pixel.r>>2, pixel.g>>2, pixel.b>>2 );
+         frame_sendBuffer();
+         
+         if(tDelta>15)
+         {
+            break;
+         }
+      }
    }
 }
 

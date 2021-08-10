@@ -85,7 +85,7 @@ int main(void)
    frame_init( &frame );
    
    // show splashscreen
-   frame_splashScreen();
+   frame_splashScreenSpiral();
 
    // load picture if any available in the flash
    frame_loadPicture();

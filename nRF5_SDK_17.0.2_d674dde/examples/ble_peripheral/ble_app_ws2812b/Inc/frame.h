@@ -78,17 +78,18 @@ typedef struct Frame_Pixel_s
 }Frame_Pixel_t;
 
 // Exported functions *********************************************************
-void     frame_init           ( Frame_HandleTypeDef_t *frame_instance );
-void     frame_sendBuffer     ( void );
-void     frame_clearBuffer    ( void );
-void     frame_setPixel       ( uint16_t col, uint16_t row, uint8_t red, uint8_t green, uint8_t blue );
-uint16_t frame_getRowCount    ( void );
-uint16_t frame_getColCount    ( void );
-uint8_t* frame_getBuffer      ( void );
-void     frame_task           ( void );
-void     frame_reqSendBuffer  ( void );
-void     frame_loadPicture    ( void );
-void     frame_storePicture   ( void );
-void     frame_splashScreen   ( void );
-void     frame_loadScreen     ( void );
+void     frame_init                 ( Frame_HandleTypeDef_t *frame_instance );
+void     frame_sendBuffer           ( void );
+void     frame_clearBuffer          ( void );
+void     frame_setPixel             ( uint16_t col, uint16_t row, uint8_t red, uint8_t green, uint8_t blue );
+uint16_t frame_getRowCount          ( void );
+uint16_t frame_getColCount          ( void );
+uint8_t* frame_getBuffer            ( void );
+void     frame_task                 ( void );
+void     frame_reqSendBuffer        ( void );
+void     frame_loadPicture          ( void );
+void     frame_storePicture         ( void );
+void     frame_splashScreenMatrix   ( void );
+void     frame_splashScreenSpiral   ( void );
+void     frame_loadScreen           ( void );
 #endif // __FRAME_H__FRAME_H
