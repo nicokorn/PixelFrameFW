@@ -328,8 +328,7 @@ void frame_loadPicture( void )
    }
    else
    {
-      frame_clearBuffer();
-      frame_reqSendBuffer();
+      frame_loadScreen();
    }
    frame_reqSendBuffer();
 }

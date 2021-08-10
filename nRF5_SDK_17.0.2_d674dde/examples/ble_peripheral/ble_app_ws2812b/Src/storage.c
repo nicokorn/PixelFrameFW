@@ -256,16 +256,25 @@ void delete_all_process( void )
 /// \return    none
 void storage_init( void )
 {
+   fds_stat_t stat = {0};
    ret_code_t rc;
+  
+   // Register first to receive an event when initialization is complete.
+   ( void ) fds_register(fds_evt_handler);
    
-    /* Register first to receive an event when initialization is complete. */
-    ( void ) fds_register(fds_evt_handler);
-
-    rc = fds_init();
-    APP_ERROR_CHECK(rc);
-
-    /* Wait for fds to initialize. */
-    wait_for_fds_ready();
+   rc = fds_init();
+   APP_ERROR_CHECK(rc);
+   
+   // Wait for fds to initialize.
+   wait_for_fds_ready();
+    
+   // get stats
+   rc = fds_stat(&stat);
+   APP_ERROR_CHECK(rc);
+   
+   // start garbage collection to remove dirty records
+   rc = fds_gc();
+   APP_ERROR_CHECK(rc);
 }
 
 // ----------------------------------------------------------------------------
@@ -365,6 +374,12 @@ Storage_StatusTypeDef storage_storePicture( uint8_t* picture, uint16_t length )
       
       /* Write the updated record to flash. */
       rc = fds_record_update(&desc, &m_picure_record);
+      
+      // check if flash is full, if so erase flash
+      if( rc == FDS_ERR_NO_SPACE_IN_FLASH )
+      {
+         
+      }
       APP_ERROR_CHECK(rc);
    }
    else
