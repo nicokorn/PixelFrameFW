@@ -1156,6 +1156,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\..\Src\frame.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 292</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
