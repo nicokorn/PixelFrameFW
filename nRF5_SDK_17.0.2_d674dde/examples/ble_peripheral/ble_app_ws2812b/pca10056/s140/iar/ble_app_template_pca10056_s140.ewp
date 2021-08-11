@@ -1336,6 +1336,9 @@
                 <name>$PROJ_DIR$\..\..\..\Inc\frame.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\..\Inc\frame_templates.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\config\sdk_config.h</name>
             </file>
             <file>

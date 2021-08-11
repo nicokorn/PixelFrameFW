@@ -85,9 +85,18 @@ typedef struct WS2812B_HandleTypeDef_s
    WS2812B_StatusTypeDef   state;
 }WS2812B_HandleTypeDef_t;
 
+typedef struct WS2812B_Pixel_s
+{
+   uint16_t                   pixelnr;
+   uint8_t                    r;
+   uint8_t                    g;
+   uint8_t                    b;
+}WS2812B_Pixel_t;
+
 // Exported functions *********************************************************
 WS2812B_StatusTypeDef   WS2812B_init            ( WS2812B_HandleTypeDef_t *ws2812b_instance );
 void                    WS2812B_sendBuffer      ( WS2812B_HandleTypeDef_t *ws2812b_instance );
 void                    WS2812B_clearBuffer     ( WS2812B_HandleTypeDef_t *ws2812b_instance );
 void                    WS2812B_setPixel        ( WS2812B_HandleTypeDef_t *ws2812b_instance, uint16_t pixel_pos, uint8_t red, uint8_t green, uint8_t blue );
+void                    WS2812B_getPixel        ( WS2812B_HandleTypeDef_t *ws2812b_instance, uint16_t *pixel_pos, uint8_t *red, uint8_t *green, uint8_t *blue );
 #endif // __WS2812B_H

@@ -71,7 +71,6 @@ typedef struct Frame_Pixel_s
 {
    int16_t                    x;
    int16_t                    y;
-   uint8_t                    l;
    uint8_t                    r;
    uint8_t                    g;
    uint8_t                    b;
@@ -92,4 +91,7 @@ void     frame_storePicture         ( void );
 void     frame_splashScreenMatrix   ( void );
 void     frame_splashScreenSpiral   ( void );
 void     frame_loadScreen           ( void );
+void     frame_smileScreen          ( void );
+void     frame_getPixel             ( uint16_t col, uint16_t row, uint8_t *red, uint8_t *green, uint8_t *blue );
+void     frame_fadingOut            ( void );
 #endif // __FRAME_H__FRAME_H

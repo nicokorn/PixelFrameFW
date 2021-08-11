@@ -193,37 +193,76 @@ void WS2812B_clearBuffer( WS2812B_HandleTypeDef_t *ws2812b_instance )
 /// \return     none
 void WS2812B_setPixel(  WS2812B_HandleTypeDef_t *ws2812b_instance, uint16_t pixel_pos, uint8_t red, uint8_t green, uint8_t blue )
 {
-  if( pixel_pos>ws2812b_instance->pixelcount )
-  {
-    return;
-  }
+   if( pixel_pos > ws2812b_instance->pixelcount )
+   {
+      return;
+   }
+   
+   // parse pixel/rbg data into pwm data
+   for( uint8_t i=0; i<8; i++)
+   {
+      if( (0x80 & (red<<i)) == 0x80 )
+      {
+         WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+8+i] = WS2812B_1;
+      }
+      else
+      {
+         WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+8+i] = WS2812B_0;
+      }
+      if( (0x80 & (green<<i)) == 0x80 )
+      {
+         WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+i] = WS2812B_1;
+      }
+      else
+      {
+         WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+i] = WS2812B_0;
+      }
+      if( (0x80 & (blue<<i)) == 0x80 )
+      {
+         WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+16+i] = WS2812B_1;
+      }
+      else
+      {
+         WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+16+i] = WS2812B_0;
+      }
+   }
+}
+
+// ----------------------------------------------------------------------------
+/// \brief      This function gets the color of a single pixel.
+///
+/// \param      [in/out]    uint16_t pixel_pos
+/// \param      [in/out]    uint8_t red
+/// \param      [in/out]    uint8_t green
+/// \param      [in/out]    uint8_t blue
+///
+/// \return     none
+void WS2812B_getPixel( WS2812B_HandleTypeDef_t *ws2812b_instance, uint16_t *pixel_pos, uint8_t *red, uint8_t *green, uint8_t *blue )
+{
+   if( *pixel_pos > ws2812b_instance->pixelcount )
+   {
+      return;
+   }
   
-  // parse pixel/rbg data into pwm data
-  for( uint8_t i=0; i<8; i++)
-  {
-    if( (0x80 & (red<<i)) == 0x80 )
-    {
-      WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+8+i] = WS2812B_1;
-    }
-    else
-    {
-      WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+8+i] = WS2812B_0;
-    }
-    if( (0x80 & (green<<i)) == 0x80 )
-    {
-      WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+i] = WS2812B_1;
-    }
-    else
-    {
-      WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+i] = WS2812B_0;
-    }
-    if( (0x80 & (blue<<i)) == 0x80 )
-    {
-      WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+16+i] = WS2812B_1;
-    }
-    else
-    {
-      WS2812B_Buffer[pixel_pos*PIXEL_BIT_SIZE+16+i] = WS2812B_0;
-    }
-  }
+   // zero out color
+   *red = 0x00;
+   *green = 0x00;
+   *blue = 0x00;
+  
+   // parse pixel/rbg data into pwm data
+   for( uint8_t i=0; i<8; i++)
+   {
+      if( WS2812B_Buffer[*pixel_pos*PIXEL_BIT_SIZE+8+i] == WS2812B_1 )
+      {
+         *red |= (0x80>>i);
+      }
+      if( WS2812B_Buffer[*pixel_pos*PIXEL_BIT_SIZE+i] == WS2812B_1 )
+      {
+         *green |= (0x80>>i);
+      }
+      if( WS2812B_Buffer[*pixel_pos*PIXEL_BIT_SIZE+16+i] == WS2812B_1 )
+      {
+         *blue |= (0x80>>i);
+      }
+   }
 }

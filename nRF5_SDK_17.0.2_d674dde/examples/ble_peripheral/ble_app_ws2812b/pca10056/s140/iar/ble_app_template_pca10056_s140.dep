@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>5</fileVersion>
-    <fileChecksum>2597812487</fileChecksum>
+    <fileChecksum>3345189631</fileChecksum>
     <configuration>
         <name>nrf52840_xxaa</name>
         <outputs>
@@ -350,6 +350,7 @@
             <file>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\log\src\nrf_log_frontend.c</file>
             <file>$PROJ_DIR$\..\..\..\..\..\..\components\softdevice\common\nrf_sdh_soc.c</file>
             <file>$PROJ_DIR$\..\..\..\..\..\..\components\libraries\util\nrf_assert.h</file>
+            <file>$PROJ_DIR$\..\..\..\Inc\frame_templates.h</file>
         </outputs>
         <file>
             <name>$PROJ_DIR$\..\..\..\..\..\..\components\ble\peer_manager\peer_data_storage.c</name>
@@ -1155,16 +1156,10 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\..\Src\frame.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 292</file>
-                </tool>
-            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 20 185 171 169 333 97 147 195 180 170 168 68 50 67 178 13 60 140 116 267 247 4 29 252 344 132 18 260 277 189 120 121 263 83 174 88 40 291 157 9 124 145 199 55 21 12 173 61 129 188 300 301 303 319 304 302 160 272 328 78 276 17 141 46 287 153 137 122 332 2 89 19 133 259 176 56 74 41 126</file>
+                    <file> 20 185 171 169 333 97 147 195 180 170 168 68 50 67 178 13 60 140 116 267 247 4 29 252 344 132 18 260 277 189 120 121 263 83 174 88 40 291 157 9 124 145 199 55 21 12 173 61 129 188 300 301 303 345 319 304 302 160 272 328 78 276 17 141 46 287 153 137 122 332 2 89 19 133 259 176 56 74 41 126</file>
                 </tool>
             </inputs>
         </file>
